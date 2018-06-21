@@ -11,12 +11,12 @@ class App extends Component {
           <Title />
         </header>
         <main>
-            <SetSelector/>
+          <SetSelector/>
 
-            <p>Set Basics</p>
-            <p>Pack Stats</p>
-            <p>Stack Layout</p>
-            <p>Notes</p>
+          <p>Set Basics</p>
+          <p>Pack Stats</p>
+          <p>Stack Layout</p>
+          <p>Notes</p>
         </main>
       </div>
     );
