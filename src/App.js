@@ -1,7 +1,8 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import "./App.css";
 import Title from "./Title";
 import SetSelector from "./SetSelector";
+import SetBasics from "./SetBasics";
 
 class App extends Component {
   render() {
@@ -11,9 +12,9 @@ class App extends Component {
           <Title />
         </header>
         <main>
-          <SetSelector/>
+          <SetSelector />
 
-          <p>Set Basics</p>
+          <SetBasics />
           <p>Pack Stats</p>
           <p>Stack Layout</p>
           <p>Notes</p>
