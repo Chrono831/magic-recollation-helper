@@ -1,15 +1,21 @@
 import React from "react";
 
 const setList = [
-  {name: "Unstable", code: "UST"},
-  {name: "Dominaria", code: "DOM"},
-  {name: "Theros", code: "THS"}
+  { name: "Unstable", code: "UST" },
+  { name: "Dominaria", code: "DOM" },
+  { name: "Theros", code: "THS" },
+  { name: "Khans of Tarkir", code: "KTK" }
 ];
 
 const SetSelector = props => (
   <div className="SetSelector">
     <span className={"SetSelector-title"}>Set</span>
-    <select autoFocus={true} required={true} className={"SetSelector-select"}>
+    <select
+      onChange={props.setSelected}
+      autoFocus={true}
+      required={true}
+      className={"SetSelector-select"}
+    >
       {setList.map(set => (
         <option
           className={"SetSelector-option"}
