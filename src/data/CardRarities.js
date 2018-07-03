@@ -1,1 +1,8 @@
-export const CardRarities = ["Common", "Uncommon", "Rare", "Mythic Rare"];
+//@flow
+
+export const CardRarities: Array<string> = [
+  "Common",
+  "Uncommon",
+  "Rare",
+  "Mythic Rare"
+];
