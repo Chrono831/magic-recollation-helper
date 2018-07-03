@@ -1,13 +1,11 @@
 import React from "react";
+import { AllSets } from "./data/AllSets";
 
-const setList = [
-  { name: "Unstable", code: "UST" },
-  { name: "Dominaria", code: "DOM" },
-  { name: "Theros", code: "THS" },
-  { name: "Khans of Tarkir", code: "KTK" }
-];
+const setList = Object.keys(AllSets).map(set => {
+  return { name: AllSets[set].name, code: AllSets[set].code };
+});
 
-const SetSelector = props => (
+export const SetSelector = props => (
   <div className="SetSelector">
     <span className={"SetSelector-title"}>Set</span>
     <select
@@ -16,6 +14,9 @@ const SetSelector = props => (
       required={true}
       className={"SetSelector-select"}
     >
+      <option className={"SetSelector-option"} value="">
+        Select a set
+      </option>
       {setList.map(set => (
         <option
           className={"SetSelector-option"}
@@ -28,5 +29,3 @@ const SetSelector = props => (
     </select>
   </div>
 );
-
-export default SetSelector;
