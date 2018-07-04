@@ -1,4 +1,4 @@
-//@flow
+// @flow
 
 export const CardRarities: Array<string> = [
   "Common",

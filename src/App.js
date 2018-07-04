@@ -3,6 +3,7 @@ import "./App.css";
 import { Title } from "./Title";
 import { SetSelector } from "./SetSelector";
 import { SetBasics } from "./SetBasics";
+import { PackStats } from "./PackStats";
 
 class App extends Component {
   state = { code: "UNDEFINED" };
@@ -21,7 +22,7 @@ class App extends Component {
           <SetSelector setSelected={this.setSelected.bind(this)} />
 
           <SetBasics code={this.state.code} />
-          <p>Pack Stats</p>
+          <PackStats code={this.state.code} />
           <p>Stack Layout</p>
           <p>Notes</p>
         </main>
