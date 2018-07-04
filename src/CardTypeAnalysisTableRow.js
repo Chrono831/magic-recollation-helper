@@ -2,7 +2,7 @@ import React from "react";
 
 import { CardTypes } from "./data/CardTypes";
 
-export const BasicTableRow = props => {
+export const CardTypeAnalysisTableRow = props => {
   const getCardInfo = (cards, rarity) => {
     const cardsInRarity = cards.filter(card => card.rarity === rarity);
     const data = cardsInRarity
@@ -24,13 +24,18 @@ export const BasicTableRow = props => {
   };
 
   const data = getCardInfo(props.cards, props.rarity);
+  console.log(data);
 
   return (
     <tr>
       <td>{props.rarity}</td>
       <td>{data["Cards"]}</td>
       {CardTypes.map(cardType => (
-        <td key={"td" + cardType + cardType.length}>{data[cardType]}</td>
+        <td key={"td" + cardType + cardType.length}>
+          {Math.round((100 * data[cardType]) / data.Cards, 2)}% ({
+            data[cardType]
+          })
+        </td>
       ))}
     </tr>
   );

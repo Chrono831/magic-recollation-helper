@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import "./App.css";
 import { Title } from "./Title";
 import { SetSelector } from "./SetSelector";
-import { SetBasics } from "./SetBasics";
 import { PackStats } from "./PackStats";
+import { CardTypeAnalysis } from "./CardTypeAnalysis";
+import { CardColorAnalysis } from "./CardColorAnalysis";
 
 class App extends Component {
   state = { code: "UNDEFINED" };
@@ -21,7 +22,8 @@ class App extends Component {
         <main>
           <SetSelector setSelected={this.setSelected.bind(this)} />
 
-          <SetBasics code={this.state.code} />
+          <CardTypeAnalysis code={this.state.code} />
+          <CardColorAnalysis code={this.state.code} />
           <PackStats code={this.state.code} />
           <p>Stack Layout</p>
           <p>Notes</p>
