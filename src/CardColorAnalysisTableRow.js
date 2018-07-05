@@ -5,22 +5,26 @@ import { CardColors } from "./data/CardColors";
 export const CardColorAnalysisTableRow = props => {
   const getCardInfo = (cards, rarity) => {
     const cardsInRarity = cards.filter(card => card.rarity === rarity);
-    const data = cardsInRarity;
-    //if has color(s)
-    //if single, add to that colors element
-    //else add to multiple
-    //else add to colorless
-    data
-      .map(card => card.colors)
-      .reduce((flat, next) => flat.concat(next), [])
-      .reduce(function(types, type) {
-        if (type in types) {
-          types[type]++;
+    const data = {
+      White: 0,
+      Blue: 0,
+      Black: 0,
+      Red: 0,
+      Green: 0,
+      Multicolor: 0,
+      Colorless: 0
+    };
+    cardsInRarity.forEach(function(card) {
+      if (Object.keys(card).includes("colors")) {
+        if (card.colors.length === 1) {
+          data[card.colors]++;
         } else {
-          types[type] = 1;
+          data["Multicolor"]++;
         }
-        return types;
-      }, {});
+      } else {
+        data["Colorless"]++;
+      }
+    });
     data["Cards"] = cardsInRarity.length;
     CardColors.forEach(function(cardType) {
       data[cardType] = cardType in data ? data[cardType] : 0;
