@@ -18,7 +18,6 @@ export const PackStats = props => {
       uncommon: booster.filter(card => card === "uncommon").length,
       rare: booster.filter(card => card === "rare").length
     };
-    console.log(packData);
   }
 
   const getArray = count => {

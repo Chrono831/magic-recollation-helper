@@ -24,7 +24,6 @@ export const CardTypeAnalysisTableRow = props => {
   };
 
   const data = getCardInfo(props.cards, props.rarity);
-  console.log(data);
 
   return (
     <tr>
