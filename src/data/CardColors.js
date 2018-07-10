@@ -9,3 +9,13 @@ export const CardColors: Array<string> = [
   "Colorless",
   "Multicolor"
 ];
+
+export const CardColorIdentities: Array<string> = [
+  "W", //0
+  "U",
+  "B",
+  "R",
+  "G",
+  "C",
+  "M" //6
+];

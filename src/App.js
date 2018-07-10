@@ -5,9 +5,11 @@ import { SetSelector } from "./SetSelector";
 import { PackStats } from "./PackStats";
 import { CardTypeAnalysis } from "./CardTypeAnalysis";
 import { CardColorAnalysis } from "./CardColorAnalysis";
+import { PackLayouts } from "./PackLayouts";
+import { AllSets } from "./data/AllSets";
 
 class App extends Component {
-  state = { code: "UNDEFINED" };
+  state = { code: AllSets.UNDEFINED };
 
   setSelected(event) {
     this.setState({ code: event.target.value.toString().toUpperCase() });
@@ -22,11 +24,15 @@ class App extends Component {
         <main>
           <SetSelector setSelected={this.setSelected.bind(this)} />
 
-          <CardTypeAnalysis code={this.state.code} />
-          <CardColorAnalysis code={this.state.code} />
-          <PackStats code={this.state.code} />
-          <p>Stack Layout</p>
-          <p>Notes</p>
+          {this.state.code !== AllSets.UNDEFINED && (
+            <div>
+              <CardTypeAnalysis code={this.state.code} />
+              <CardColorAnalysis code={this.state.code} />
+              <PackStats code={this.state.code} />
+              <PackLayouts code={this.state.code} />
+              <p>Notes</p>
+            </div>
+          )}
         </main>
       </div>
     );

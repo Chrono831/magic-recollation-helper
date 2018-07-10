@@ -31,7 +31,13 @@ export const SetSelector = props => (
       required={true}
       className={"SetSelector-select"}
     >
-      <option className={"SetSelector-option"} value="">
+      <option
+        className={"SetSelector-option"}
+        value="-1"
+        defaultValue="-1"
+        selected={true}
+        disabled={true}
+      >
         Select a set
       </option>
       {setList.map(set => (
