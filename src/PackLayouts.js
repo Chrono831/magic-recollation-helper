@@ -22,7 +22,6 @@ export const PackLayouts = props => {
     };
   }
 
-  const sortByMultiverseId = (a, b) => a.multiverseid - b.multiverseid;
   const sortByColor = (a, b) => {
     if (a.colorIdentity === b.colorIdentity) {
       return a.multiverseid - b.multiverseid;
@@ -38,11 +37,13 @@ export const PackLayouts = props => {
     const cards = AllSets[props.code].cards.filter(
       card => card.rarity === rarity
     );
+    //TODO fill to end of row
     for (let i = 0; i < cards.length; i++) {
       const card = cards[i];
       card.sortIndex = i + 1;
-      card.colorIdentity =
-        card.colorIdentity === undefined
+      card.colorIdentity = card.types.includes("Land")
+        ? "L"
+        : card.colorIdentity === undefined
           ? "C"
           : card.colorIdentity.length > 1
             ? "M"
@@ -77,6 +78,8 @@ export const PackLayouts = props => {
       color = "gray";
     } else if (code === "M") {
       color = "mediumorchid";
+    } else if (code === "L") {
+      color = "darkgoldenrod";
     }
     return color;
   };
@@ -85,14 +88,20 @@ export const PackLayouts = props => {
     const cardStyle = {
       gridColumn: index % getPackCount(),
       gridRow: Math.floor((index - 1) / getPackCount()) + 1,
-      background: getBackgroundColor(card.colorIdentity)
+      background: getBackgroundColor(card.colorIdentity),
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "space-evenly",
+      flexDirection: "column"
     };
-    console.log(cardStyle);
+    const textStyle = {
+      fontSize: "1rem",
+      fontFamily: "monospace"
+    };
+    console.log(card.types.toString());
     return (
       <div style={cardStyle} key={"grid" + card.multiverseid + index}>
-        <div>{card.name}</div>
-        <div>{card.manaCost}</div>
-        <div>{card.types.toString()}</div>
+        {card.types.map(type => <div style={textStyle}>{type}</div>)}
       </div>
     );
   };
