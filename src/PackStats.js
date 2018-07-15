@@ -31,7 +31,7 @@ export const PackStats = props => {
 
   return (
     <div>
-      <p>Pack Stats</p>
+      <h2>Pack Stats</h2>
       <table>
         <thead>
           <tr>

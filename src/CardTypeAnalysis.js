@@ -7,7 +7,7 @@ import { CardTypeAnalysisTableRow } from "./CardTypeAnalysisTableRow";
 
 export const CardTypeAnalysis = props => (
   <div>
-    <p>Set Basics</p>
+    <h2>Set Basics</h2>
     <table>
       <thead>
         <tr>

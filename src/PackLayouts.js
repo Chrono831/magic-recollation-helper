@@ -46,8 +46,8 @@ export const PackLayouts = props => {
   };
 
   const getCardData = rarity => {
-    const cards = AllSets[props.code].cards.filter(
-      card => card.rarity === rarity
+    const cards = AllSets[props.code].cards.filter(card =>
+      card.rarity.includes(rarity)
     );
     //TODO fill to end of row
     for (let i = 0; i < cards.length; i++) {
@@ -123,12 +123,24 @@ export const PackLayouts = props => {
 
   return (
     <div>
-      <p>Pack Stats</p>
+      <h2>Pack Layout</h2>
+      <h4>Commons</h4>
       <div className="PackLayouts-grid-container">
         {getCardData("Common").map((card, index) =>
           getCardRow(card, index + 1)
         )}
       </div>
+      <h4>Uncommons - TODO Give Probability for top-3</h4>
+      <div className="PackLayouts-grid-container">
+        {getCardData("Uncommon").map((card, index) =>
+          getCardRow(card, index + 1)
+        )}
+      </div>
+      <h4>Rare - TODO Give Probability for top-1</h4>
+      <div className="PackLayouts-grid-container">
+        {getCardData("Rare").map((card, index) => getCardRow(card, index + 1))}
+      </div>
+      <h4>TODO Other??? - land, DFC, Legendary slot?</h4>
     </div>
   );
 };

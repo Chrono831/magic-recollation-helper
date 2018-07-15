@@ -7,7 +7,7 @@ import { CardColorAnalysisTableRow } from "./CardColorAnalysisTableRow";
 
 export const CardColorAnalysis = props => (
   <div>
-    <p>Card Color Analysis</p>
+    <h2>Card Color Analysis</h2>
     <table>
       <thead>
         <tr>
