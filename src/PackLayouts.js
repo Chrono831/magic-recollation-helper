@@ -3,6 +3,7 @@ import React from "react";
 import "./PackLayouts.css";
 import { AllSets } from "./data/AllSets";
 import { CardColorIdentities } from "./data/CardColors";
+import { CardTypes, CardTypesCodes } from "./data/CardTypes";
 
 export const PackLayouts = props => {
   const set = AllSets[props.code];
@@ -22,14 +23,25 @@ export const PackLayouts = props => {
     };
   }
 
-  const sortByColor = (a, b) => {
-    if (a.colorIdentity === b.colorIdentity) {
-      return a.multiverseid - b.multiverseid;
+  const cardSort = (a, b) => {
+    const colorDiff =
+      CardColorIdentities.indexOf(a.colorIdentity) -
+      CardColorIdentities.indexOf(b.colorIdentity);
+    const typeDiff =
+      (a.types.length === b.types.length) === 1
+        ? CardTypes.indexOf(a.types[0]) - CardTypes.indexOf(b.types[0])
+        : CardTypes.indexOf(a.types[a.types.length - 1]) -
+          CardTypes.indexOf(b.types[b.types.length - 1]);
+    const multiverseIdDiff = a.multiverseid - b.multiverseid;
+
+    if (colorDiff === 0) {
+      if (typeDiff === 0) {
+        return multiverseIdDiff;
+      } else {
+        return typeDiff;
+      }
     } else {
-      return (
-        CardColorIdentities.indexOf(a.colorIdentity) -
-        CardColorIdentities.indexOf(b.colorIdentity)
-      );
+      return colorDiff;
     }
   };
 
@@ -49,7 +61,7 @@ export const PackLayouts = props => {
             ? "M"
             : card.colorIdentity[0];
     }
-    return cards.sort(sortByColor);
+    return cards.sort(cardSort);
   };
 
   const getPackCount = () => {
@@ -95,13 +107,16 @@ export const PackLayouts = props => {
       flexDirection: "column"
     };
     const textStyle = {
-      fontSize: "1rem",
-      fontFamily: "monospace"
+      fontSize: "2rem",
+      fontFamily: "monospace",
+      fontStyle: "bold"
     };
     console.log(card.types.toString());
     return (
       <div style={cardStyle} key={"grid" + card.multiverseid + index}>
-        {card.types.map(type => <div style={textStyle}>{type}</div>)}
+        {card.types.map(type => (
+          <div style={textStyle}>{CardTypesCodes[type]}</div>
+        ))}
       </div>
     );
   };
