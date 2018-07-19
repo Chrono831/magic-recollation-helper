@@ -137,6 +137,10 @@ export const PackLayouts = props => {
         )}
       </div>
       <h4>Rare - TODO Give Probability for top-1</h4>
+      <h4>____ - for one row of cards</h4>
+      <h4>____ - __ for each cell</h4>
+      <h4>____ - ____ take a random square [color/type]</h4>
+      <h4>____ - ____ filter out all of that exact color+type combination</h4>
       <div className="PackLayouts-grid-container">
         {getCardData("Rare").map((card, index) => getCardRow(card, index + 1))}
       </div>

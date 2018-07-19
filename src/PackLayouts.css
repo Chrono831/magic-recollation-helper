@@ -1,6 +1,8 @@
 .PackLayouts-grid-container {
   display: grid;
-  grid-template-columns: repeat(13, 100px);
+  grid-template-columns: repeat(13, 1fr);
   grid-gap: 5px;
   grid-auto-rows: minmax(100px, auto);
+  margin-left: 2%;
+  margin-right: 2%;
 }
