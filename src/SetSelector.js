@@ -33,9 +33,9 @@ export const SetSelector = props => (
     >
       <option
         className={"SetSelector-option"}
-        value="-1"
-        defaultValue="-1"
-        selected={true}
+        value=""
+        defaultValue=""
+        selected={true} //TODO fix this
         disabled={true}
       >
         Select a set

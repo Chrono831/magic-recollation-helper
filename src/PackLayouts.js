@@ -72,7 +72,6 @@ export const PackLayouts = props => {
 
     return Math.ceil(commonsCount / boosterCommonCount);
   };
-  console.log(`pack count : ${getPackCount()}`);
 
   const getBackgroundColor = code => {
     let color;
@@ -96,29 +95,110 @@ export const PackLayouts = props => {
     return color;
   };
 
+  const getCardStyle = (card, index) => ({
+    gridColumn: index % getPackCount(),
+    gridRow: Math.floor((index - 1) / getPackCount()) + 1,
+    background: getBackgroundColor(card.colorIdentity),
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-evenly",
+    flexDirection: "column"
+  });
+
+  const textStyle = {
+    fontSize: "2rem",
+    fontFamily: "monospace",
+    fontStyle: "bold"
+  };
+
   const getCardRow = (card, index) => {
-    const cardStyle = {
-      gridColumn: index % getPackCount(),
-      gridRow: Math.floor((index - 1) / getPackCount()) + 1,
-      background: getBackgroundColor(card.colorIdentity),
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "space-evenly",
-      flexDirection: "column"
-    };
-    const textStyle = {
-      fontSize: "2rem",
-      fontFamily: "monospace",
-      fontStyle: "bold"
-    };
-    console.log(card.types.toString());
+    const cardStyle = getCardStyle(card, index);
     return (
       <div style={cardStyle} key={"grid" + card.multiverseid + index}>
         {card.types.map(type => (
-          <div style={textStyle}>{CardTypesCodes[type]}</div>
+          <div
+            key={"card-types" + type + card.multiverseid + index}
+            style={textStyle}
+          >
+            {CardTypesCodes[type]}
+          </div>
         ))}
       </div>
     );
+  };
+
+  const getRareCardRow = (card, index) => {
+    const cardStyle = getCardStyle(card, index);
+    return (
+      <div style={cardStyle} key={"grid-rare" + card.multiverseid + index}>
+        {card.types.map(type => (
+          <div
+            key={"card-types-rare" + type + card.multiverseid + index}
+            style={textStyle}
+          >
+            {CardTypesCodes[type]}
+          </div>
+        ))}
+      </div>
+    );
+  };
+
+  const getRandomCard = cards =>
+    cards[Math.floor(Math.random() * cards.length)];
+
+  const getUnusedCards = (cards, usedColors, usedTypes) => {
+    console.log(
+      `cards.length : ${cards.length} ` +
+        `| usedColors.size : ${usedColors.size} ` +
+        `| usedTypes.size : ${usedTypes.size}`
+    );
+    //TODO fix this up, the idea is to exclude any cards where there is a match to any color in the usedColors
+    //cards.filter({colorIdentity} => usedColors.some(color => color === colorIdentity) === false);
+
+    return cards;
+  };
+
+  const getRareRow = props => {
+    const cards = getCardData("Rare");
+    console.log(`cards.length: ${cards.length}`);
+    const rowSize = getPackCount();
+    console.log(`rowSize : ${rowSize}`);
+    //get all card colors from mythic+rare
+    const completeCardColors = new Set(cards.map(card => card.colorIdentity));
+    console.log(`cardColorsComplete   : ${completeCardColors.size}`);
+    completeCardColors.forEach(function(card) {
+      console.log(card);
+    });
+    const completeCardTypes = new Set(
+      cards.map(card => card.types).reduce((acc, cur) => acc.concat(cur))
+    );
+    console.log(`cardTypesComplete  : ${completeCardTypes.size}`);
+    completeCardTypes.forEach(function(card) {
+      console.log(card);
+    });
+
+    let cardRow = [];
+    let usedCardColors = new Set();
+    let usedCardTypes = new Set();
+    for (let index = 0; index < rowSize; index++) {
+      //filter cards to unpicked types
+      const unusedCards = getUnusedCards(cards, usedCardColors, usedCardTypes);
+      const card = getRandomCard(unusedCards);
+      usedCardColors.add(card.colorIdentity);
+      card.types.forEach(function(cardType) {
+        usedCardTypes.add(cardType);
+      });
+      cardRow.push(getRareCardRow(card, index + 1));
+      if (usedCardTypes.size === completeCardTypes.size) {
+        console.log("clearing usedCardTypes");
+        usedCardTypes = new Set();
+      }
+      if (usedCardColors.size === completeCardColors.size) {
+        console.log("clearing usedCardColors");
+        usedCardColors = new Set();
+      }
+    }
+    return cardRow;
   };
 
   return (
@@ -141,9 +221,7 @@ export const PackLayouts = props => {
       <h4>____ - __ for each cell</h4>
       <h4>____ - ____ take a random square [color/type]</h4>
       <h4>____ - ____ filter out all of that exact color+type combination</h4>
-      <div className="PackLayouts-grid-container">
-        {getCardData("Rare").map((card, index) => getCardRow(card, index + 1))}
-      </div>
+      <div className="PackLayouts-grid-container">{getRareRow()}</div>
       <h4>TODO Other??? - land, DFC, Legendary slot?</h4>
     </div>
   );
