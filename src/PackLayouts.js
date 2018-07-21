@@ -147,48 +147,49 @@ export const PackLayouts = props => {
     cards[Math.floor(Math.random() * cards.length)];
 
   const getUnusedCards = (cards, usedColors, usedTypes) => {
-    console.log(
-      `cards.length : ${cards.length} ` +
-        `| usedColors.size : ${usedColors.size} ` +
-        `| usedTypes.size : ${usedTypes.size}`
-    );
-    //TODO fix this up, the idea is to exclude any cards where there is a match to any color in the usedColors
-    //cards.filter({colorIdentity} => usedColors.some(color => color === colorIdentity) === false);
+    let unusedCards = cards;
 
-    return cards;
+    unusedCards = unusedCards.filter(
+      card => usedColors.some(color => color === card.colorIdentity) === false
+    );
+
+    unusedCards = unusedCards.filter(
+      card => usedTypes.some(type => type === card.types[0]) === false
+    );
+
+    return unusedCards;
   };
 
   const getRareRow = props => {
     const cards = getCardData("Rare");
-    console.log(`cards.length: ${cards.length}`);
     const rowSize = getPackCount();
-    console.log(`rowSize : ${rowSize}`);
-    //get all card colors from mythic+rare
     const completeCardColors = new Set(cards.map(card => card.colorIdentity));
-    console.log(`cardColorsComplete   : ${completeCardColors.size}`);
-    completeCardColors.forEach(function(card) {
-      console.log(card);
-    });
     const completeCardTypes = new Set(
       cards.map(card => card.types).reduce((acc, cur) => acc.concat(cur))
     );
-    console.log(`cardTypesComplete  : ${completeCardTypes.size}`);
-    completeCardTypes.forEach(function(card) {
-      console.log(card);
-    });
 
     let cardRow = [];
     let usedCardColors = new Set();
     let usedCardTypes = new Set();
     for (let index = 0; index < rowSize; index++) {
-      //filter cards to unpicked types
-      const unusedCards = getUnusedCards(cards, usedCardColors, usedCardTypes);
+      const unusedCards = getUnusedCards(
+        cards,
+        Array.from(usedCardColors),
+        Array.from(usedCardTypes)
+      );
+      console.log(`unusedCards.length : ${unusedCards.length}`);
+      //TODO reset if unusedCards.length === 0
+      if (!unusedCards.length) {
+        console.log(`NO unusedCards `);
+      }
       const card = getRandomCard(unusedCards);
       usedCardColors.add(card.colorIdentity);
       card.types.forEach(function(cardType) {
         usedCardTypes.add(cardType);
       });
       cardRow.push(getRareCardRow(card, index + 1));
+      console.log(`cardRow.length : ${cardRow.length}`);
+
       if (usedCardTypes.size === completeCardTypes.size) {
         console.log("clearing usedCardTypes");
         usedCardTypes = new Set();
@@ -216,11 +217,7 @@ export const PackLayouts = props => {
           getCardRow(card, index + 1)
         )}
       </div>
-      <h4>Rare - TODO Give Probability for top-1</h4>
-      <h4>____ - for one row of cards</h4>
-      <h4>____ - __ for each cell</h4>
-      <h4>____ - ____ take a random square [color/type]</h4>
-      <h4>____ - ____ filter out all of that exact color+type combination</h4>
+      <h4>Rare</h4>
       <div className="PackLayouts-grid-container">{getRareRow()}</div>
       <h4>TODO Other??? - land, DFC, Legendary slot?</h4>
     </div>
