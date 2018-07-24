@@ -143,8 +143,13 @@ export const PackLayouts = props => {
     );
   };
 
-  const getRandomCard = cards =>
-    cards[Math.floor(Math.random() * cards.length)];
+  const getRandomCard = cards => {
+    const calc = Math.floor(Math.random() * cards.length);
+    console.log(`getRandomCard.calc = ${calc}`);
+    console.log(`getRandomCard cards.length = ${cards.length}`);
+
+    return cards[calc];
+  };
 
   const getUnusedCards = (cards, usedColors, usedTypes) => {
     let unusedCards = cards;
@@ -160,8 +165,8 @@ export const PackLayouts = props => {
     return unusedCards;
   };
 
-  const getRareRow = props => {
-    const cards = getCardData("Rare");
+  const getRandomRows = (rarity, numberOfRows) => {
+    const cards = getCardData(rarity);
     const rowSize = getPackCount();
     const completeCardColors = new Set(cards.map(card => card.colorIdentity));
     const completeCardTypes = new Set(
@@ -171,24 +176,17 @@ export const PackLayouts = props => {
     let cardRow = [];
     let usedCardColors = new Set();
     let usedCardTypes = new Set();
-    for (let index = 0; index < rowSize; index++) {
-      const unusedCards = getUnusedCards(
-        cards,
-        Array.from(usedCardColors),
-        Array.from(usedCardTypes)
-      );
-      console.log(`unusedCards.length : ${unusedCards.length}`);
+    const cardCount = rowSize * numberOfRows;
+    console.log(
+      `rarity : ${rarity}` +
+        ` | numberOfRows : ${numberOfRows}` +
+        ` | cardCount : ${cardCount}`
+    );
+    for (let index = 0; index < cardCount; index++) {
       //TODO reset if unusedCards.length === 0
-      if (!unusedCards.length) {
-        console.log(`NO unusedCards `);
-      }
-      const card = getRandomCard(unusedCards);
-      usedCardColors.add(card.colorIdentity);
-      card.types.forEach(function(cardType) {
-        usedCardTypes.add(cardType);
-      });
-      cardRow.push(getRareCardRow(card, index + 1));
-      console.log(`cardRow.length : ${cardRow.length}`);
+      //if (!unusedCards.length) {
+      //  console.log(`NO unusedCards `);
+      //}
 
       if (usedCardTypes.size === completeCardTypes.size) {
         console.log("clearing usedCardTypes");
@@ -198,9 +196,42 @@ export const PackLayouts = props => {
         console.log("clearing usedCardColors");
         usedCardColors = new Set();
       }
+
+      let unusedCards = getUnusedCards(
+        cards,
+        Array.from(usedCardColors),
+        Array.from(usedCardTypes)
+      );
+      console.log(
+        `getUnusedCards( ${cards.length} (cards), ${Array.from(
+          usedCardColors
+        )} (colors), ${Array.from(usedCardTypes)} (types) ) = ${
+          unusedCards.length
+        } `
+      );
+      //TODO - issue is there is no combination of color+type that exists, so the filter size goes to zero
+      if (!unusedCards.length) {
+        usedCardTypes = new Set();
+        usedCardColors = new Set();
+        unusedCards = cards;
+      }
+      //TODO - cleanup all this muck
+
+      const card = getRandomCard(unusedCards);
+
+      usedCardColors.add(card.colorIdentity);
+      usedCardTypes.add(card.types.map(type => type));
+      //card.types.forEach(function(cardType) {
+      //  usedCardTypes.add(cardType);
+      //});
+      cardRow.push(getRareCardRow(card, index + 1));
+      //console.log(`cardRow.length : ${cardRow.length}`);
     }
     return cardRow;
   };
+  //{getCardData("Uncommon").map((card, index) =>
+  //  getCardRow(card, index + 1)
+  //)}
 
   return (
     <div>
@@ -211,14 +242,15 @@ export const PackLayouts = props => {
           getCardRow(card, index + 1)
         )}
       </div>
-      <h4>Uncommons - TODO Give Probability for top-3</h4>
+      <h4>Uncommons</h4>
       <div className="PackLayouts-grid-container">
-        {getCardData("Uncommon").map((card, index) =>
-          getCardRow(card, index + 1)
-        )}
+        {getRandomRows("Uncommon", 3)}
       </div>
       <h4>Rare</h4>
-      <div className="PackLayouts-grid-container">{getRareRow()}</div>
+      <div className="PackLayouts-grid-container">
+        {getRandomRows("Rare", 1)}
+      </div>
+      <br />
       <h4>TODO Other??? - land, DFC, Legendary slot?</h4>
     </div>
   );
