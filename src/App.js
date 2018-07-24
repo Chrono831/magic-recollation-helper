@@ -8,6 +8,8 @@ import { CardColorAnalysis } from "./CardColorAnalysis";
 import { PackLayouts } from "./PackLayouts";
 import { AllSets } from "./data/AllSets";
 
+import "../node_modules/bootstrap/dist/css/bootstrap.css";
+
 class App extends Component {
   state = { code: AllSets.UNDEFINED };
 

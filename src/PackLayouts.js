@@ -106,7 +106,7 @@ export const PackLayouts = props => {
   });
 
   const textStyle = {
-    fontSize: "2rem",
+    fontSize: "3rem",
     fontFamily: "monospace",
     fontStyle: "bold"
   };
@@ -235,7 +235,7 @@ export const PackLayouts = props => {
 
   return (
     <div>
-      <h2>Pack Layout</h2>
+      <h2 style={{ textAlign: "left" }}>Pack Layout</h2>
       <h4>Commons</h4>
       <div className="PackLayouts-grid-container">
         {getCardData("Common").map((card, index) =>
@@ -252,6 +252,7 @@ export const PackLayouts = props => {
       </div>
       <br />
       <h4>TODO Other??? - land, DFC, Legendary slot?</h4>
+      <hr />
     </div>
   );
 };

@@ -4,11 +4,12 @@ import { AllSets } from "./data/AllSets";
 import { CardTypes } from "./data/CardTypes";
 import { CardRarities } from "./data/CardRarities";
 import { CardTypeAnalysisTableRow } from "./CardTypeAnalysisTableRow";
+import { Table } from "react-bootstrap";
 
 export const CardTypeAnalysis = props => (
   <div>
-    <h2>Set Basics</h2>
-    <table>
+    <h2 style={{ textAlign: "left" }}>Card Type Analysis</h2>
+    <Table condensed hover responsive>
       <thead>
         <tr>
           <th>Rarity</th>
@@ -27,6 +28,7 @@ export const CardTypeAnalysis = props => (
           />
         ))}
       </tbody>
-    </table>
+    </Table>
+    <hr />
   </div>
 );

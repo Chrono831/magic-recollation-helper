@@ -1,2 +1,9 @@
-.SetSelector {
+.SetSelector-title {
+  margin-right: 5px;
+  font-weight: bold;
+  font-family: monospace;
+}
+
+.SetSelector-select {
+  padding: 5px;
 }

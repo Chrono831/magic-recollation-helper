@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "bootstrap": "3.3.7",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-scripts": "1.1.4"
@@ -16,6 +17,7 @@
   },
   "devDependencies": {
     "flow-bin": "^0.75.0",
-    "prettier": "^1.13.7"
+    "prettier": "^1.13.7",
+    "react-bootstrap": "^0.32.1"
   }
 }

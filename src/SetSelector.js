@@ -1,5 +1,6 @@
 import React from "react";
 import { AllSets } from "./data/AllSets";
+import "./SetSelector.css";
 
 const sortSetByReleaseDateDesc = (a, b) => {
   const aConverted = a.releaseDate
@@ -50,5 +51,6 @@ export const SetSelector = props => (
         </option>
       ))}
     </select>
+    <hr />
   </div>
 );

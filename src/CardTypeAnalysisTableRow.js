@@ -27,10 +27,13 @@ export const CardTypeAnalysisTableRow = props => {
 
   return (
     <tr>
-      <td>{props.rarity}</td>
-      <td>{data["Cards"]}</td>
+      <td style={{ textAlign: "left" }}>{props.rarity}</td>
+      <td style={{ textAlign: "left" }}>{data["Cards"]}</td>
       {CardTypes.map(cardType => (
-        <td key={"td" + cardType + cardType.length}>
+        <td
+          key={"td" + cardType + cardType.length}
+          style={{ textAlign: "left" }}
+        >
           {Math.round((100 * data[cardType]) / data.Cards, 2)}% ({
             data[cardType]
           })

@@ -4,11 +4,12 @@ import { AllSets } from "./data/AllSets";
 import { CardColors } from "./data/CardColors";
 import { CardRarities } from "./data/CardRarities";
 import { CardColorAnalysisTableRow } from "./CardColorAnalysisTableRow";
+import { Table } from "react-bootstrap";
 
 export const CardColorAnalysis = props => (
   <div>
-    <h2>Card Color Analysis</h2>
-    <table>
+    <h2 style={{ textAlign: "left" }}>Card Color Analysis</h2>
+    <Table condensed hover responsive>
       <thead>
         <tr>
           <th>Rarity</th>
@@ -27,6 +28,7 @@ export const CardColorAnalysis = props => (
           />
         ))}
       </tbody>
-    </table>
+    </Table>
+    <hr />
   </div>
 );
