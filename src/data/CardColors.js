@@ -19,3 +19,5 @@ export const CardColorIdentities: Array<string> = [
   "C",
   "M" //6
 ];
+
+//TODO - add in improved mapping and font <i ...> stuff

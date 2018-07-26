@@ -36,8 +36,8 @@ export const CardColorAnalysisTableRow = props => {
 
   return (
     <tr>
-      <td>{props.rarity}</td>
-      <td>{data["Cards"]}</td>
+      <td style={{ textAlign: "left" }}>{props.rarity}</td>
+      <td style={{ textAlign: "left" }}>{data["Cards"]}</td>
       {CardColors.map(cardType => (
         <td
           key={"td" + cardType + cardType.length}

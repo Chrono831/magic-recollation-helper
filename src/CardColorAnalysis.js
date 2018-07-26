@@ -6,6 +6,8 @@ import { CardRarities } from "./data/CardRarities";
 import { CardColorAnalysisTableRow } from "./CardColorAnalysisTableRow";
 import { Table } from "react-bootstrap";
 
+import "./mtg-font-master/css/magic-font.css";
+
 export const CardColorAnalysis = props => (
   <div>
     <h2 style={{ textAlign: "left" }}>Card Color Analysis</h2>
