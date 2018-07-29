@@ -23,7 +23,7 @@ export const CardColorAnalysis = props => (
           <th>Cards</th>
           {CardColors.map(cardColor => (
             <th key={"th" + cardColor + cardColor.length}>
-              <i className={getCardColorClass(cardColor)} title={cardColor}/>
+              <i className={getCardColorClass(cardColor)} title={cardColor} />
             </th>
           ))}
         </tr>
