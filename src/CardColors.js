@@ -27,5 +27,5 @@ export const CardColorKeys = {
   Red: "r",
   Green: "g",
   Colorless: "c",
-  Multicolor: "chaos"
+  Multicolor: "chaos multicolor-card"
 };

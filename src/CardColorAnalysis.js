@@ -7,6 +7,7 @@ import { CardColorAnalysisTableRow } from "./CardColorAnalysisTableRow";
 import { Table } from "react-bootstrap";
 
 import "./mtg-font-master/css/magic-font.css";
+import "./CardColorAnalysis.css";
 
 const getCardColorClass = cardColor => {
   const colorKey = CardColorKeys[cardColor.toString()];

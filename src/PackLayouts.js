@@ -65,7 +65,7 @@ export const PackLayouts = props => {
     } else if (code === "U") {
       color = "#c1d7e9";
     } else if (code === "B") {
-      color = "#bab1ab";
+      color = "#75726e";
     } else if (code === "R") {
       color = "#e49977";
     } else if (code === "G") {
