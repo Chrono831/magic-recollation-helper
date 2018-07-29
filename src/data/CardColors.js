@@ -20,4 +20,12 @@ export const CardColorIdentities: Array<string> = [
   "M" //6
 ];
 
-//TODO - add in improved mapping and font <i ...> stuff
+export const CardColorKeys = {
+  White: "w",
+  Blue: "u",
+  Black: "b",
+  Red: "r",
+  Green: "g",
+  Colorless: "c",
+  Multicolor: "chaos"
+};

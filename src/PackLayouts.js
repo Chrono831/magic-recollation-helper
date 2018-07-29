@@ -145,9 +145,6 @@ export const PackLayouts = props => {
 
   const getRandomCard = cards => {
     const calc = Math.floor(Math.random() * cards.length);
-    console.log(`getRandomCard.calc = ${calc}`);
-    console.log(`getRandomCard cards.length = ${cards.length}`);
-
     return cards[calc];
   };
 
@@ -177,23 +174,11 @@ export const PackLayouts = props => {
     let usedCardColors = new Set();
     let usedCardTypes = new Set();
     const cardCount = rowSize * numberOfRows;
-    console.log(
-      `rarity : ${rarity}` +
-        ` | numberOfRows : ${numberOfRows}` +
-        ` | cardCount : ${cardCount}`
-    );
     for (let index = 0; index < cardCount; index++) {
-      //TODO reset if unusedCards.length === 0
-      //if (!unusedCards.length) {
-      //  console.log(`NO unusedCards `);
-      //}
-
       if (usedCardTypes.size === completeCardTypes.size) {
-        console.log("clearing usedCardTypes");
         usedCardTypes = new Set();
       }
       if (usedCardColors.size === completeCardColors.size) {
-        console.log("clearing usedCardColors");
         usedCardColors = new Set();
       }
 
@@ -202,36 +187,20 @@ export const PackLayouts = props => {
         Array.from(usedCardColors),
         Array.from(usedCardTypes)
       );
-      console.log(
-        `getUnusedCards( ${cards.length} (cards), ${Array.from(
-          usedCardColors
-        )} (colors), ${Array.from(usedCardTypes)} (types) ) = ${
-          unusedCards.length
-        } `
-      );
-      //TODO - issue is there is no combination of color+type that exists, so the filter size goes to zero
       if (!unusedCards.length) {
         usedCardTypes = new Set();
         usedCardColors = new Set();
         unusedCards = cards;
       }
-      //TODO - cleanup all this muck
 
       const card = getRandomCard(unusedCards);
 
       usedCardColors.add(card.colorIdentity);
       usedCardTypes.add(card.types.map(type => type));
-      //card.types.forEach(function(cardType) {
-      //  usedCardTypes.add(cardType);
-      //});
       cardRow.push(getRareCardRow(card, index + 1));
-      //console.log(`cardRow.length : ${cardRow.length}`);
     }
     return cardRow;
   };
-  //{getCardData("Uncommon").map((card, index) =>
-  //  getCardRow(card, index + 1)
-  //)}
 
   return (
     <div>

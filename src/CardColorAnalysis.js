@@ -1,12 +1,17 @@
 import React from "react";
 
 import { AllSets } from "./data/AllSets";
-import { CardColors } from "./data/CardColors";
+import { CardColorKeys, CardColors } from "./data/CardColors";
 import { CardRarities } from "./data/CardRarities";
 import { CardColorAnalysisTableRow } from "./CardColorAnalysisTableRow";
 import { Table } from "react-bootstrap";
 
 import "./mtg-font-master/css/magic-font.css";
+
+const getCardColorClass = cardColor => {
+  const colorKey = CardColorKeys[cardColor.toString()];
+  return `mi mi-${colorKey} mi-mana mi-shadow mi-lg`;
+};
 
 export const CardColorAnalysis = props => (
   <div>
@@ -17,7 +22,9 @@ export const CardColorAnalysis = props => (
           <th>Rarity</th>
           <th>Cards</th>
           {CardColors.map(card => (
-            <th key={"th" + card + card.length}>{card}</th>
+            <th key={"th" + card + card.length}>
+              <i className={getCardColorClass(card)} />
+            </th>
           ))}
         </tr>
       </thead>
