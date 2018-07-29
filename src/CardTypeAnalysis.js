@@ -20,7 +20,7 @@ export const CardTypeAnalysis = props => (
           <th>Cards</th>
           {CardTypes.map(cardType => (
             <th key={"th" + cardType + cardType.length}>
-              <i className={getCardTypeClass(cardType)} />
+              <i className={getCardTypeClass(cardType)} title={cardType} />
             </th>
           ))}
         </tr>

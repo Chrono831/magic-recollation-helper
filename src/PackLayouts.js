@@ -3,25 +3,11 @@ import React from "react";
 import "./PackLayouts.css";
 import { AllSets } from "./data/AllSets";
 import { CardColorIdentities } from "./data/CardColors";
-import { CardTypes, CardTypesCodes } from "./data/CardTypes";
+import { CardTypes } from "./data/CardTypes";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const PackLayouts = props => {
   const set = AllSets[props.code];
-
-  let booster = [];
-  let packData = {
-    common: 0,
-    uncommon: 0,
-    rare: 0
-  };
-  if (props.code !== "UNDEFINED") {
-    booster = set.booster.reduce((acc, val) => acc.concat(val), []);
-    packData = {
-      common: booster.filter(card => card === "common").length,
-      uncommon: booster.filter(card => card === "uncommon").length,
-      rare: booster.filter(card => card === "rare").length
-    };
-  }
 
   const cardSort = (a, b) => {
     const colorDiff =
@@ -49,7 +35,6 @@ export const PackLayouts = props => {
     const cards = AllSets[props.code].cards.filter(card =>
       card.rarity.includes(rarity)
     );
-    //TODO fill to end of row
     for (let i = 0; i < cards.length; i++) {
       const card = cards[i];
       card.sortIndex = i + 1;
@@ -76,17 +61,17 @@ export const PackLayouts = props => {
   const getBackgroundColor = code => {
     let color;
     if (code === "W") {
-      color = "whitesmoke";
+      color = "#f8f6d8";
     } else if (code === "U") {
-      color = "lightblue";
+      color = "#c1d7e9";
     } else if (code === "B") {
-      color = "darkgray";
+      color = "#bab1ab";
     } else if (code === "R") {
-      color = "tomato";
+      color = "#e49977";
     } else if (code === "G") {
-      color = "lightseagreen";
+      color = "#a3c095";
     } else if (code === "C") {
-      color = "gray";
+      color = "#cac5c0";
     } else if (code === "M") {
       color = "mediumorchid";
     } else if (code === "L") {
@@ -106,9 +91,16 @@ export const PackLayouts = props => {
   });
 
   const textStyle = {
-    fontSize: "3rem",
-    fontFamily: "monospace",
-    fontStyle: "bold"
+    fontSize: "3rem"
+  };
+
+  const getCardIconClass = type => {
+    if (!CardTypes.includes(type)) {
+      return <FontAwesomeIcon icon="question-circle" title={type} />;
+    }
+
+    const className = `mi mi-${type.toLocaleLowerCase()} mi-lg`;
+    return <i className={className} title={type} />;
   };
 
   const getCardRow = (card, index) => {
@@ -120,7 +112,7 @@ export const PackLayouts = props => {
             key={"card-types" + type + card.multiverseid + index}
             style={textStyle}
           >
-            {CardTypesCodes[type]}
+            {getCardIconClass(type)}
           </div>
         ))}
       </div>
@@ -136,7 +128,7 @@ export const PackLayouts = props => {
             key={"card-types-rare" + type + card.multiverseid + index}
             style={textStyle}
           >
-            {CardTypesCodes[type]}
+            {getCardIconClass(type)}
           </div>
         ))}
       </div>
@@ -205,23 +197,20 @@ export const PackLayouts = props => {
   return (
     <div>
       <h2 style={{ textAlign: "left" }}>Pack Layout</h2>
-      <h4>Commons</h4>
+      <h4 style={{ textAlign: "left" }}>Commons</h4>
       <div className="PackLayouts-grid-container">
         {getCardData("Common").map((card, index) =>
           getCardRow(card, index + 1)
         )}
       </div>
-      <h4>Uncommons</h4>
+      <h4 style={{ textAlign: "left" }}>Uncommons</h4>
       <div className="PackLayouts-grid-container">
         {getRandomRows("Uncommon", 3)}
       </div>
-      <h4>Rare</h4>
+      <h4 style={{ textAlign: "left" }}>Rare</h4>
       <div className="PackLayouts-grid-container">
         {getRandomRows("Rare", 1)}
       </div>
-      <br />
-      <h4>TODO Other??? - land, DFC, Legendary slot?</h4>
-      <hr />
     </div>
   );
 };
