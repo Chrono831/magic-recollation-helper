@@ -7,3 +7,9 @@
 .SetSelector-select {
   padding: 5px;
 }
+
+.SetSelector-option {
+  font-size: larger;
+  font-weight: bold;
+  font-family: monospace;
+}

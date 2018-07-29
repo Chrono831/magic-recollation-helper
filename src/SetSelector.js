@@ -33,7 +33,6 @@ export const SetSelector = props => (
       className={"SetSelector-select"}
     >
       <option
-        className={"SetSelector-option"}
         value=""
         defaultValue=""
         selected={true} //TODO fix this
@@ -42,11 +41,7 @@ export const SetSelector = props => (
         Select a set
       </option>
       {setList.map(set => (
-        <option
-          className={"SetSelector-option"}
-          key={set.code}
-          value={set.code}
-        >
+        <option key={set.code} value={set.code}>
           {set.name}
         </option>
       ))}

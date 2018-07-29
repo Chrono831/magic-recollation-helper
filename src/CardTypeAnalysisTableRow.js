@@ -34,9 +34,10 @@ export const CardTypeAnalysisTableRow = props => {
           key={"td" + cardType + cardType.length}
           style={{ textAlign: "left" }}
         >
-          {Math.round((100 * data[cardType]) / data.Cards, 2)}% ({
-            data[cardType]
-          })
+          <span>{Math.round((100 * data[cardType]) / data.Cards, 2)}% </span>
+          <span style={{ fontSize: "smaller", color: "slategray" }}>
+            ({data[cardType]})
+          </span>
         </td>
       ))}
     </tr>

@@ -34,9 +34,8 @@ class App extends Component {
             <div>
               <CardTypeAnalysis code={this.state.code} />
               <CardColorAnalysis code={this.state.code} />
-              <PackStats code={this.state.code} />
               <PackLayouts code={this.state.code} />
-              <p>Notes</p>
+              <PackStats code={this.state.code} />
             </div>
           )}
         </main>
