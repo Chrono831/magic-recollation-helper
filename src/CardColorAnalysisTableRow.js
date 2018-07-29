@@ -1,6 +1,6 @@
 import React from "react";
 
-import { CardColors } from "./data/CardColors";
+import { CardColors } from "./CardColors";
 
 export const CardColorAnalysisTableRow = props => {
   const getCardInfo = (cards, rarity) => {

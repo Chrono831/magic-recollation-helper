@@ -1,9 +1,9 @@
 import React from "react";
 
 import "./PackLayouts.css";
-import { AllSets } from "./data/AllSets";
-import { CardColorIdentities } from "./data/CardColors";
-import { CardTypes } from "./data/CardTypes";
+import { AllSets } from "./AllSets";
+import { CardColorIdentities } from "./CardColors";
+import { CardTypes } from "./CardTypes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const PackLayouts = props => {

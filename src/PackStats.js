@@ -1,7 +1,7 @@
 import React from "react";
 import { Table } from "react-bootstrap";
 
-import { AllSets } from "./data/AllSets";
+import { AllSets } from "./AllSets";
 
 export const PackStats = props => {
   const data = AllSets[props.code];

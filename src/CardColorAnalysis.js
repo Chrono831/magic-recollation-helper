@@ -1,8 +1,8 @@
 import React from "react";
 
-import { AllSets } from "./data/AllSets";
-import { CardColorKeys, CardColors } from "./data/CardColors";
-import { CardRarities } from "./data/CardRarities";
+import { AllSets } from "./AllSets";
+import { CardColorKeys, CardColors } from "./CardColors";
+import { CardRarities } from "./CardRarities";
 import { CardColorAnalysisTableRow } from "./CardColorAnalysisTableRow";
 import { Table } from "react-bootstrap";
 

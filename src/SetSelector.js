@@ -1,5 +1,5 @@
 import React from "react";
-import { AllSets } from "./data/AllSets";
+import { AllSets } from "./AllSets";
 import "./SetSelector.css";
 
 const sortSetByReleaseDateDesc = (a, b) => {

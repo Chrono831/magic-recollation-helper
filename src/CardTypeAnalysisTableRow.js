@@ -1,6 +1,6 @@
 import React from "react";
 
-import { CardTypes } from "./data/CardTypes";
+import { CardTypes } from "./CardTypes";
 
 export const CardTypeAnalysisTableRow = props => {
   const getCardInfo = (cards, rarity) => {

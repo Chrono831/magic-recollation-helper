@@ -6,7 +6,7 @@ import { PackStats } from "./PackStats";
 import { CardTypeAnalysis } from "./CardTypeAnalysis";
 import { CardColorAnalysis } from "./CardColorAnalysis";
 import { PackLayouts } from "./PackLayouts";
-import { AllSets } from "./data/AllSets";
+import { AllSets } from "./AllSets";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 
