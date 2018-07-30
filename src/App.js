@@ -26,16 +26,18 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <Title />
-        </header>
-        <main>
+          <hr />
           <SetSelector setSelected={this.setSelected.bind(this)} />
-
+        </header>
+        <main className="App-main">
           {this.state.code !== AllSets.UNDEFINED && (
-            <div>
+            <div className="App-set-info">
               <CardTypeAnalysis code={this.state.code} />
               <CardColorAnalysis code={this.state.code} />
               <PackLayouts code={this.state.code} />
-              <PackStats code={this.state.code} />
+              <div style={{ width: "100%" }}>
+                <PackStats code={this.state.code} />
+              </div>
             </div>
           )}
         </main>

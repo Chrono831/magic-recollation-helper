@@ -11,7 +11,7 @@ const getCardTypeClass = cardType => {
 };
 
 export const CardTypeAnalysis = props => (
-  <div>
+  <div style={{ width: "100%" }}>
     <h2 style={{ textAlign: "left" }}>Card Type Analysis</h2>
     <Table condensed hover responsive>
       <thead>
@@ -35,6 +35,5 @@ export const CardTypeAnalysis = props => (
         ))}
       </tbody>
     </Table>
-    <hr />
   </div>
 );

@@ -7,9 +7,9 @@ export const PackStats = props => {
   const data = AllSets[props.code];
 
   return (
-    <div>
+    <div style={{ width: "100%" }}>
       <h2 style={{ textAlign: "left" }}>Pack Stats</h2>
-      <Table striped condensed hover>
+      <Table responsive condensed hover>
         <thead>
           <tr>
             <th>Slot</th>
@@ -25,7 +25,6 @@ export const PackStats = props => {
           ))}
         </tbody>
       </Table>
-      <hr />
     </div>
   );
 };

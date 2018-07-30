@@ -31,13 +31,9 @@ export const SetSelector = props => (
       autoFocus={true}
       required={true}
       className={"SetSelector-select"}
+      defaultValue={"placeholder"}
     >
-      <option
-        value=""
-        defaultValue=""
-        selected={true} //TODO fix this
-        disabled={true}
-      >
+      <option value="placeholder" disabled>
         Select a set
       </option>
       {setList.map(set => (
@@ -46,6 +42,5 @@ export const SetSelector = props => (
         </option>
       ))}
     </select>
-    <hr />
   </div>
 );

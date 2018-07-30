@@ -73,7 +73,7 @@ export const PackLayouts = props => {
     } else if (code === "C") {
       color = "#cac5c0";
     } else if (code === "M") {
-      color = "mediumorchid";
+      color = "#c790d5";
     } else if (code === "L") {
       color = "darkgoldenrod";
     }
@@ -195,21 +195,27 @@ export const PackLayouts = props => {
   };
 
   return (
-    <div>
+    <div style={{ width: "100%" }}>
       <h2 style={{ textAlign: "left" }}>Pack Layout</h2>
-      <h4 style={{ textAlign: "left" }}>Commons</h4>
-      <div className="PackLayouts-grid-container">
-        {getCardData("Common").map((card, index) =>
-          getCardRow(card, index + 1)
-        )}
+      <div>
+        <h4 style={{ textAlign: "left" }}>Commons</h4>
+        <div className="PackLayouts-grid-container">
+          {getCardData("Common").map((card, index) =>
+            getCardRow(card, index + 1)
+          )}
+        </div>
       </div>
-      <h4 style={{ textAlign: "left" }}>Uncommons</h4>
-      <div className="PackLayouts-grid-container">
-        {getRandomRows("Uncommon", 3)}
+      <div>
+        <h4 style={{ textAlign: "left" }}>Uncommons</h4>
+        <div className="PackLayouts-grid-container">
+          {getRandomRows("Uncommon", 3)}
+        </div>
       </div>
-      <h4 style={{ textAlign: "left" }}>Rare</h4>
-      <div className="PackLayouts-grid-container">
-        {getRandomRows("Rare", 1)}
+      <div>
+        <h4 style={{ textAlign: "left" }}>Rare</h4>
+        <div className="PackLayouts-grid-container">
+          {getRandomRows("Rare", 1)}
+        </div>
       </div>
     </div>
   );

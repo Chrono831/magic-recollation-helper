@@ -3,12 +3,26 @@
 }
 
 .App-header {
-  background-color: #222;
+  background-color: #ddd;
   padding: 20px;
-  color: white;
 }
 
-main {
+.App-selector {
+  padding: 10px;
+}
+
+.App-main {
+  display: flex;
+  justify-content: center;
   margin-left: 2%;
   margin-right: 2%;
+  background-color: #f8f9ff;
+}
+
+.App-set-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 850px;
 }

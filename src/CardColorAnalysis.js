@@ -15,7 +15,7 @@ const getCardColorClass = cardColor => {
 };
 
 export const CardColorAnalysis = props => (
-  <div>
+  <div style={{ width: "100%" }}>
     <h2 style={{ textAlign: "left" }}>Card Color Analysis</h2>
     <Table condensed hover responsive>
       <thead>
@@ -39,6 +39,5 @@ export const CardColorAnalysis = props => (
         ))}
       </tbody>
     </Table>
-    <hr />
   </div>
 );
