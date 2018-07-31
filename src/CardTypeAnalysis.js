@@ -1,12 +1,9 @@
 import React from "react";
 
-import { AllSets } from "./AllSets";
 import { CardTypes } from "./CardTypes";
-import { CardRarities } from "./CardRarities";
-import { Table } from "react-bootstrap";
-import { CardAnalysisTableRow } from "./CardAnalysisTableRow";
+import { CardAnalysisTable } from "./CardAnalysisTable";
 
-const getCardTypeClass = cardType => {
+const getCardClass = cardType => {
   return `mi mi-${cardType.toString().toLocaleLowerCase()} mi-shadow mi-lg`;
 };
 
@@ -34,29 +31,12 @@ export const CardTypeAnalysis = props => {
   return (
     <div style={{ width: "100%" }}>
       <h2 style={{ textAlign: "left" }}>Card Type Analysis</h2>
-      <Table condensed hover responsive>
-        <thead>
-          <tr>
-            <th>Rarity</th>
-            <th>Cards</th>
-            {CardTypes.map(cardType => (
-              <th key={"th" + cardType + cardType.length}>
-                <i className={getCardTypeClass(cardType)} title={cardType} />
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {CardRarities.map(rarity => (
-            <CardAnalysisTableRow
-              rarity={rarity}
-              data={getCardInfo(AllSets[props.code].cards, rarity)}
-              dataType={CardTypes}
-              key={`tr-type-${AllSets[props.code].name}-${rarity}`}
-            />
-          ))}
-        </tbody>
-      </Table>
+      <CardAnalysisTable
+        dataType={CardTypes}
+        code={props.code}
+        getCardInfo={getCardInfo.bind(this)}
+        getCardClass={getCardClass.bind(this)}
+      />
     </div>
   );
 };

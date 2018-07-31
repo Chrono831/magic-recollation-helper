@@ -1,15 +1,12 @@
 import React from "react";
 
-import { AllSets } from "./AllSets";
 import { CardColorKeys, CardColors } from "./CardColors";
-import { CardRarities } from "./CardRarities";
-import { Table } from "react-bootstrap";
-import { CardAnalysisTableRow } from "./CardAnalysisTableRow";
 
 import "./mtg-font-master/css/magic-font.css";
 import "./CardColorAnalysis.css";
+import { CardAnalysisTable } from "./CardAnalysisTable";
 
-const getCardColorClass = cardColor => {
+const getCardClass = cardColor => {
   const colorKey = CardColorKeys[cardColor.toString()];
   return `mi mi-${colorKey} mi-mana mi-shadow mi-lg`;
 };
@@ -47,29 +44,12 @@ export const CardColorAnalysis = props => {
   return (
     <div style={{ width: "100%" }}>
       <h2 style={{ textAlign: "left" }}>Card Color Analysis</h2>
-      <Table condensed hover responsive>
-        <thead>
-          <tr>
-            <th>Rarity</th>
-            <th>Cards</th>
-            {CardColors.map(cardColor => (
-              <th key={"th" + cardColor + cardColor.length}>
-                <i className={getCardColorClass(cardColor)} title={cardColor} />
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {CardRarities.map(rarity => (
-            <CardAnalysisTableRow
-              rarity={rarity}
-              data={getCardInfo(AllSets[props.code].cards, rarity)}
-              dataType={CardColors}
-              key={`tr-color-${AllSets[props.code].name}-${rarity}`}
-            />
-          ))}
-        </tbody>
-      </Table>
+      <CardAnalysisTable
+        dataType={CardColors}
+        code={props.code}
+        getCardInfo={getCardInfo.bind(this)}
+        getCardClass={getCardClass.bind(this)}
+      />
     </div>
   );
 };
