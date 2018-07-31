@@ -2,15 +2,13 @@ import React from "react";
 import { AllSets } from "./AllSets";
 import "./SetSelector.css";
 
-const sortSetByReleaseDateDesc = (a, b) => {
-  const aConverted = a.releaseDate
-    ? parseInt(a.releaseDate.replace(/-/g, ""), 10)
-    : 19900101;
-  const bConverted = b.releaseDate
-    ? parseInt(b.releaseDate.replace(/-/g, ""), 10)
-    : 19900101;
-  return bConverted - aConverted;
-};
+const MIN_DATE = 19900101;
+
+const getDateFormatted = date =>
+  date ? parseInt(date.replace(/-/g, ""), 10) : MIN_DATE;
+
+const sortSetByReleaseDateDesc = (a, b) =>
+  getDateFormatted(b.releaseDate) - getDateFormatted(a.releaseDate);
 
 const setList = Object.keys(AllSets)
   .map(set => {
@@ -30,7 +28,7 @@ export const SetSelector = props => (
       onChange={props.setSelected}
       autoFocus={true}
       required={true}
-      className={"SetSelector-select"}
+      style={{ padding: "5px" }}
       defaultValue={"placeholder"}
     >
       <option value="placeholder" disabled>
@@ -38,7 +36,7 @@ export const SetSelector = props => (
       </option>
       {setList.map(set => (
         <option key={set.code} value={set.code}>
-          {set.name}
+          {set.name} ({set.code})
         </option>
       ))}
     </select>
