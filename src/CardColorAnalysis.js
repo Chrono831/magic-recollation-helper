@@ -1,43 +1,48 @@
 import React from "react";
 
-import { CardColorKeys, CardColors } from "./CardColors";
+import { CardColorsObject } from "./CardColors";
 
 import "./mtg-font-master/css/magic-font.css";
 import "./CardColorAnalysis.css";
 import { CardAnalysisTable } from "./CardAnalysisTable";
 
-const getCardClass = cardColor => {
-  const colorKey = CardColorKeys[cardColor.toString()];
-  return `mi mi-${colorKey} mi-mana mi-shadow mi-lg`;
+const getCardClass = colorIdentity => {
+  const colorKey = CardColorsObject[colorIdentity].mtgFont;
+  console.log(`getCardClass.colorKey : ${colorKey}`);
+  return `mi ${colorKey} mi-mana mi-shadow mi-lg`;
 };
+
+const getCardColorsList = Object.keys(CardColorsObject).filter(
+  key => key !== "L"
+);
+console.log(`getCardColorsList : ${getCardColorsList}`);
 
 export const CardColorAnalysis = props => {
   const getCardInfo = (cards, rarity) => {
     const cardsInRarity = cards.filter(card => card.rarity === rarity);
     const data = {
-      White: 0,
-      Blue: 0,
-      Black: 0,
-      Red: 0,
-      Green: 0,
-      Multicolor: 0,
-      Colorless: 0
+      W: 0,
+      U: 0,
+      B: 0,
+      R: 0,
+      G: 0,
+      M: 0,
+      C: 0,
+      Cards: 0
     };
     cardsInRarity.forEach(function(card) {
       if (Object.keys(card).includes("colors")) {
-        if (card.colors.length === 1) {
-          data[card.colors]++;
+        //intentionally excludes lands
+        if (card.colorIdentity.length === 1) {
+          data[card.colorIdentity]++;
         } else {
-          data["Multicolor"]++;
+          data["M"]++;
         }
       } else {
-        data["Colorless"]++;
+        data["C"]++;
       }
     });
-    data["Cards"] = cardsInRarity.length;
-    CardColors.forEach(function(cardType) {
-      data[cardType] = cardType in data ? data[cardType] : 0;
-    });
+    data.Cards = cardsInRarity.length;
     return data;
   };
 
@@ -45,7 +50,7 @@ export const CardColorAnalysis = props => {
     <div style={{ width: "100%" }}>
       <h2 style={{ textAlign: "left" }}>Card Color Analysis</h2>
       <CardAnalysisTable
-        dataType={CardColors}
+        dataType={getCardColorsList}
         code={props.code}
         getCardInfo={getCardInfo.bind(this)}
         getCardClass={getCardClass.bind(this)}

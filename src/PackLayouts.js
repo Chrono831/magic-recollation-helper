@@ -2,7 +2,7 @@ import React from "react";
 
 import "./PackLayouts.css";
 import { AllSets } from "./AllSets";
-import { CardColorIdentities } from "./CardColors";
+import { CardColorsObject } from "./CardColors";
 import { CardTypes } from "./CardTypes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -11,8 +11,8 @@ export const PackLayouts = props => {
 
   const cardSort = (a, b) => {
     const colorDiff =
-      CardColorIdentities.indexOf(a.colorIdentity) -
-      CardColorIdentities.indexOf(b.colorIdentity);
+      CardColorsObject[a.colorIdentity].order -
+      CardColorsObject[b.colorIdentity].order;
     const typeDiff =
       (a.types.length === b.types.length) === 1
         ? CardTypes.indexOf(a.types[0]) - CardTypes.indexOf(b.types[0])
@@ -58,32 +58,10 @@ export const PackLayouts = props => {
     return Math.ceil(commonsCount / boosterCommonCount);
   };
 
-  const getBackgroundColor = code => {
-    let color;
-    if (code === "W") {
-      color = "#f8f6d8";
-    } else if (code === "U") {
-      color = "#c1d7e9";
-    } else if (code === "B") {
-      color = "#75726e";
-    } else if (code === "R") {
-      color = "#e49977";
-    } else if (code === "G") {
-      color = "#a3c095";
-    } else if (code === "C") {
-      color = "#cac5c0";
-    } else if (code === "M") {
-      color = "#c790d5";
-    } else if (code === "L") {
-      color = "darkgoldenrod";
-    }
-    return color;
-  };
-
   const getCardStyle = (card, index) => ({
     gridColumn: index % getPackCount(),
     gridRow: Math.floor((index - 1) / getPackCount()) + 1,
-    background: getBackgroundColor(card.colorIdentity),
+    background: CardColorsObject[card.colorIdentity].background,
     display: "flex",
     alignItems: "center",
     justifyContent: "space-evenly",
@@ -110,22 +88,6 @@ export const PackLayouts = props => {
         {card.types.map(type => (
           <div
             key={"card-types" + type + card.multiverseid + index}
-            style={textStyle}
-          >
-            {getCardIconClass(type)}
-          </div>
-        ))}
-      </div>
-    );
-  };
-
-  const getRareCardRow = (card, index) => {
-    const cardStyle = getCardStyle(card, index);
-    return (
-      <div style={cardStyle} key={"grid-rare" + card.multiverseid + index}>
-        {card.types.map(type => (
-          <div
-            key={"card-types-rare" + type + card.multiverseid + index}
             style={textStyle}
           >
             {getCardIconClass(type)}
@@ -162,7 +124,7 @@ export const PackLayouts = props => {
       cards.map(card => card.types).reduce((acc, cur) => acc.concat(cur))
     );
 
-    let cardRow = [];
+    let cardRows = [];
     let usedCardColors = new Set();
     let usedCardTypes = new Set();
     const cardCount = rowSize * numberOfRows;
@@ -189,9 +151,9 @@ export const PackLayouts = props => {
 
       usedCardColors.add(card.colorIdentity);
       usedCardTypes.add(card.types.map(type => type));
-      cardRow.push(getRareCardRow(card, index + 1));
+      cardRows.push(getCardRow(card, index + 1));
     }
-    return cardRow;
+    return cardRows;
   };
 
   return (

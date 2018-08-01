@@ -35,9 +35,7 @@ class App extends Component {
               <CardTypeAnalysis code={this.state.code} />
               <CardColorAnalysis code={this.state.code} />
               <PackLayouts code={this.state.code} />
-              <div style={{ width: "100%" }}>
-                <PackStats code={this.state.code} />
-              </div>
+              <PackStats code={this.state.code} />
             </div>
           )}
         </main>
