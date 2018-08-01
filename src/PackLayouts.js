@@ -67,10 +67,6 @@ export const PackLayouts = props => {
     flexDirection: "column"
   });
 
-  const textStyle = {
-    fontSize: "3rem"
-  };
-
   const getCardIconClass = type => {
     if (!CardTypes.includes(type)) {
       return <FontAwesomeIcon icon="question-circle" title={type} />;
@@ -87,7 +83,7 @@ export const PackLayouts = props => {
         {card.types.map(type => (
           <div
             key={"card-types" + type + card.multiverseid + index}
-            style={textStyle}
+            style={{ fontSize: "3rem" }}
           >
             {getCardIconClass(type)}
           </div>
