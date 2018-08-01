@@ -1,6 +1,6 @@
 // @flow
 
-export const CardColorsObject = {
+export const CardColors = {
   W: { mtgFont: "mi-w", background: "#f8f6d8", order: 0, name: "White" },
   U: { mtgFont: "mi-u", background: "#c1d7e9", order: 1, name: "Blue" },
   B: { mtgFont: "mi-b", background: "#75726e", order: 2, name: "Black" },

@@ -1,20 +1,18 @@
 import React from "react";
 
-import { CardColorsObject } from "./CardColors";
+import { CardColors } from "./CardColors";
 
 import "./mtg-font-master/css/magic-font.css";
 import "./CardColorAnalysis.css";
 import { CardAnalysisTable } from "./CardAnalysisTable";
 
 const getCardClass = colorIdentity => {
-  const colorKey = CardColorsObject[colorIdentity].mtgFont;
+  const colorKey = CardColors[colorIdentity].mtgFont;
   console.log(`getCardClass.colorKey : ${colorKey}`);
   return `mi ${colorKey} mi-mana mi-shadow mi-lg`;
 };
 
-const getCardColorsList = Object.keys(CardColorsObject).filter(
-  key => key !== "L"
-);
+const getCardColorsList = Object.keys(CardColors).filter(key => key !== "L");
 console.log(`getCardColorsList : ${getCardColorsList}`);
 
 export const CardColorAnalysis = props => {

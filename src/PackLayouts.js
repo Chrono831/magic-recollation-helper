@@ -2,7 +2,7 @@ import React from "react";
 
 import "./PackLayouts.css";
 import { AllSets } from "./AllSets";
-import { CardColorsObject } from "./CardColors";
+import { CardColors } from "./CardColors";
 import { CardTypes } from "./CardTypes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -11,8 +11,7 @@ export const PackLayouts = props => {
 
   const cardSort = (a, b) => {
     const colorDiff =
-      CardColorsObject[a.colorIdentity].order -
-      CardColorsObject[b.colorIdentity].order;
+      CardColors[a.colorIdentity].order - CardColors[b.colorIdentity].order;
     const typeDiff =
       (a.types.length === b.types.length) === 1
         ? CardTypes.indexOf(a.types[0]) - CardTypes.indexOf(b.types[0])
@@ -61,7 +60,7 @@ export const PackLayouts = props => {
   const getCardStyle = (card, index) => ({
     gridColumn: index % getPackCount(),
     gridRow: Math.floor((index - 1) / getPackCount()) + 1,
-    background: CardColorsObject[card.colorIdentity].background,
+    background: CardColors[card.colorIdentity].background,
     display: "flex",
     alignItems: "center",
     justifyContent: "space-evenly",
