@@ -9,7 +9,7 @@ const cardSort = (a, b) => {
     (a.types.length === b.types.length) === 1
       ? CardTypes[a.types[0]].order - CardTypes[b.types[0]].order
       : CardTypes[a.types[a.types.length - 1]].order -
-      CardTypes[b.types[b.types.length - 1]].order;
+        CardTypes[b.types[b.types.length - 1]].order;
   const multiverseIdDiff = a.multiverseid - b.multiverseid;
 
   if (colorDiff === 0) {
