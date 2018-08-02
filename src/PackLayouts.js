@@ -14,9 +14,9 @@ export const PackLayouts = props => {
       CardColors[a.colorIdentity].order - CardColors[b.colorIdentity].order;
     const typeDiff =
       (a.types.length === b.types.length) === 1
-        ? CardTypes.indexOf(a.types[0]) - CardTypes.indexOf(b.types[0])
-        : CardTypes.indexOf(a.types[a.types.length - 1]) -
-          CardTypes.indexOf(b.types[b.types.length - 1]);
+        ? CardTypes[a.types[0]].order - CardTypes[b.types[0]].order
+        : CardTypes[a.types[a.types.length - 1]].order -
+          CardTypes[b.types[b.types.length - 1]].order;
     const multiverseIdDiff = a.multiverseid - b.multiverseid;
 
     if (colorDiff === 0) {
@@ -68,21 +68,21 @@ export const PackLayouts = props => {
   });
 
   const getCardIconClass = type => {
-    if (!CardTypes.includes(type)) {
+    if (!CardTypes.hasOwnProperty(type)) {
       return <FontAwesomeIcon icon="question-circle" title={type} />;
     }
 
-    const className = `mi mi-${type.toLocaleLowerCase()} mi-lg`;
+    const className = `mi ${CardTypes[type].mtgFont} mi-lg`;
     return <i className={className} title={type} />;
   };
 
   const getCardRow = (card, index) => {
     const cardStyle = getCardStyle(card, index);
     return (
-      <div style={cardStyle} key={"grid" + card.multiverseid + index}>
+      <div style={cardStyle} key={`grid-${card.multiverseid}-${index}`}>
         {card.types.map(type => (
           <div
-            key={"card-types" + type + card.multiverseid + index}
+            key={`card-types-${type}-${card.multiverseid}-${index}`}
             style={{ fontSize: "3rem" }}
           >
             {getCardIconClass(type)}

@@ -3,9 +3,10 @@ import React from "react";
 import { CardTypes } from "./CardTypes";
 import { CardAnalysisTable } from "./CardAnalysisTable";
 
-const getCardClass = cardType => {
-  return `mi mi-${cardType.toString().toLocaleLowerCase()} mi-shadow mi-lg`;
-};
+const getCardClass = cardType =>
+  `mi ${CardTypes[cardType].mtgFont} mi-shadow mi-lg`;
+
+const cardTypesList = Object.keys(CardTypes);
 
 export const CardTypeAnalysis = props => {
   const getCardInfo = (cards, rarity) => {
@@ -21,8 +22,8 @@ export const CardTypeAnalysis = props => {
         }
         return types;
       }, {});
-    data["Cards"] = cardsInRarity.length;
-    CardTypes.forEach(function(cardType) {
+    data.Cards = cardsInRarity.length;
+    cardTypesList.forEach(function(cardType) {
       data[cardType] = cardType in data ? data[cardType] : 0;
     });
     return data;
@@ -32,7 +33,7 @@ export const CardTypeAnalysis = props => {
     <div style={{ width: "100%" }}>
       <h2 style={{ textAlign: "left" }}>Card Type Analysis</h2>
       <CardAnalysisTable
-        dataType={CardTypes}
+        dataType={cardTypesList}
         code={props.code}
         getCardInfo={getCardInfo.bind(this)}
         getCardClass={getCardClass.bind(this)}

@@ -6,14 +6,10 @@ import "./mtg-font-master/css/magic-font.css";
 import "./CardColorAnalysis.css";
 import { CardAnalysisTable } from "./CardAnalysisTable";
 
-const getCardClass = colorIdentity => {
-  const colorKey = CardColors[colorIdentity].mtgFont;
-  console.log(`getCardClass.colorKey : ${colorKey}`);
-  return `mi ${colorKey} mi-mana mi-shadow mi-lg`;
-};
+const getCardClass = colorIdentity =>
+  `mi ${CardColors[colorIdentity].mtgFont} mi-mana mi-shadow mi-lg`;
 
-const getCardColorsList = Object.keys(CardColors).filter(key => key !== "L");
-console.log(`getCardColorsList : ${getCardColorsList}`);
+const cardColorsList = Object.keys(CardColors).filter(key => key !== "L");
 
 export const CardColorAnalysis = props => {
   const getCardInfo = (cards, rarity) => {
@@ -48,7 +44,7 @@ export const CardColorAnalysis = props => {
     <div style={{ width: "100%" }}>
       <h2 style={{ textAlign: "left" }}>Card Color Analysis</h2>
       <CardAnalysisTable
-        dataType={getCardColorsList}
+        dataType={cardColorsList}
         code={props.code}
         getCardInfo={getCardInfo.bind(this)}
         getCardClass={getCardClass.bind(this)}
