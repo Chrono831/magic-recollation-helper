@@ -9,8 +9,7 @@
     "bootstrap": "3.3.7",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "react-scripts": "1.1.4",
-    "prop-types": "latest"
+    "react-scripts": "1.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -20,7 +19,7 @@
     "flow": "flow status"
   },
   "devDependencies": {
-    "flow-bin": "^0.75.0",
+    "flow-bin": "^0.77.0",
     "prettier": "^1.13.7",
     "react-bootstrap": "^0.32.1"
   }
