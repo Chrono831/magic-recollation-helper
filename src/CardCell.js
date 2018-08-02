@@ -18,11 +18,11 @@ export const CardCell = props => {
 
   const getCardIconClass = type => {
     if (!CardTypes.hasOwnProperty(type)) {
-      return <FontAwesomeIcon icon="question-circle" title={type}/>;
+      return <FontAwesomeIcon icon="question-circle" title={type} />;
     }
 
     const className = `mi ${CardTypes[type].mtgFont} mi-lg`;
-    return <i className={className} title={type}/>;
+    return <i className={className} title={type} />;
   };
 
   return (

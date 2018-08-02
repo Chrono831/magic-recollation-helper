@@ -1,5 +1,6 @@
 import React from "react";
 
+import "./PackLayouts.css";
 import { getCleanedCards, getPackCount, getRandomCard } from "./cardUtilities";
 import { CardCell } from "./CardCell";
 
