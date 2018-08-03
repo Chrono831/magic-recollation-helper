@@ -1,5 +1,3 @@
 import React from "react";
 
-export const Title = props => (
-  <h1 className={"App-title"}>Magic ReCollation Helper</h1>
-);
+export const Title = props => <h1>Magic ReCollation Helper</h1>;

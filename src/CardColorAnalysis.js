@@ -45,9 +45,9 @@ export const CardColorAnalysis = props => {
       <h2 style={{ textAlign: "left" }}>Card Color Analysis</h2>
       <CardAnalysisTable
         dataType={cardColorsList}
-        code={props.code}
         getCardInfo={getCardInfo.bind(this)}
         getCardClass={getCardClass.bind(this)}
+        {...props}
       />
     </div>
   );

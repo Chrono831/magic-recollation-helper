@@ -29,9 +29,7 @@ export const CardAnalysisTable = ({
           rarity={rarity}
           data={getCardInfo(AllSets[code].cards, rarity)}
           dataType={dataType}
-          key={`tr-${dataType.toString().length}-${
-            AllSets[code].name
-          }-${rarity}`}
+          key={`tr-${dataType.length}-${AllSets[code].name}-${rarity}`}
         />
       ))}
     </tbody>

@@ -3,12 +3,12 @@ import React from "react";
 import { CardTypes } from "./CardTypes";
 import { CardAnalysisTable } from "./CardAnalysisTable";
 
-const getCardClass = cardType =>
-  `mi ${CardTypes[cardType].mtgFont} mi-shadow mi-lg`;
-
-const cardTypesList = Object.keys(CardTypes);
-
 export const CardTypeAnalysis = props => {
+  const getCardClass = cardType =>
+    `mi ${CardTypes[cardType].mtgFont} mi-shadow mi-lg`;
+
+  const cardTypesList = Object.keys(CardTypes);
+
   const getCardInfo = (cards, rarity) => {
     const cardsInRarity = cards.filter(card => card.rarity === rarity);
     const data = cardsInRarity
@@ -34,9 +34,9 @@ export const CardTypeAnalysis = props => {
       <h2 style={{ textAlign: "left" }}>Card Type Analysis</h2>
       <CardAnalysisTable
         dataType={cardTypesList}
-        code={props.code}
         getCardInfo={getCardInfo.bind(this)}
         getCardClass={getCardClass.bind(this)}
+        {...props}
       />
     </div>
   );
