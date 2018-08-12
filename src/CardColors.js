@@ -9,9 +9,9 @@ export const CardColors = {
   C: { mtgFont: "mi-c", background: "#cac5c0", order: 5, name: "Colorless" },
   M: {
     mtgFont: "mi-chaos multicolor-card",
-    background: "#c790d5",
+    background: "#f9d44e",
     order: 6,
     name: "Multicolor"
   },
-  L: { mtgFont: "", background: "#b8860b", order: 7, name: "Land" }
+  L: { mtgFont: "", background: "#a9683f", order: 7, name: "Land" }
 };

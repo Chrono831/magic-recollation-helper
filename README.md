@@ -48,10 +48,6 @@ _roughly in priority order_
 Documentation Work
 
 - README clarify
-- Add "how to use" section
-  - It doesn't have to be super detailed even, maybe just an intro paragraph on the Pack Layout section that is all
-    "here's all the information you need to make realistic draft packs out of your collection.
-    just do X, then consult these layout tables and do Y, then do Z, and you're set" (edited)
 
 Phase One
 
@@ -60,9 +56,12 @@ Phase One
 - Offload json loading until requested (reduce initial load and data transfer)
   - delay loading sets
 - Improve deploy process (did it manually for now)
+- Fill-in rest of row for commons with "random card"
 
 Phase Two
 
+- Improve layout / suggestions for Uncommons/Rares
+  - something more like "here are some suggestions", or "here are distributions"
 - Grown up website address
 - Add more set analysis
   - set keyword analysis (ex: flying, trample, double strike, fateseal)
@@ -73,5 +72,4 @@ Phase Two
 - Split set analysis from pack layout functionality into separate webapps
 - Add "re-roll" button for uncommons/rares (separate?)
 - Multicolor
-  - color - gold? purple?
   - icon - change to something better
