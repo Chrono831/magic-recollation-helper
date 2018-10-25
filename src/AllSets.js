@@ -17,8 +17,10 @@ import ogw from "./sets/OGW";
 import ori from "./sets/ORI";
 import xln from "./sets/XLN";
 import zen from "./sets/ZEN";
+import grn from "./sets/GRN";
 
 export const AllSets = {
+  GRN: grn,
   M19: m19,
   DOM: dom,
   RIX: rix,
