@@ -20,16 +20,16 @@ self.__precacheManifest = [
     url: "/static/js/runtime~main.229c360f.js"
   },
   {
+    revision: "6d8a99a642a5d3ab8593a1f4988dfffe",
+    url: "/static/media/magic-font.6d8a99a6.ttf"
+  },
+  {
     revision: "abf5fa851fa9f4bc1c903c5338c2ee09",
     url: "/static/media/magic-font.abf5fa85.eot"
   },
   {
     revision: "f220a94987a38fb30b82928ee576b72e",
     url: "/static/media/magic-font.f220a949.woff"
-  },
-  {
-    revision: "6d8a99a642a5d3ab8593a1f4988dfffe",
-    url: "/static/media/magic-font.6d8a99a6.ttf"
   },
   {
     revision: "65ebb01af4dfe4271b28a51149440cb8",
