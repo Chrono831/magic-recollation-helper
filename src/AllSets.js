@@ -18,8 +18,10 @@ import ori from "./sets/ORI";
 import xln from "./sets/XLN";
 import zen from "./sets/ZEN";
 import grn from "./sets/GRN";
+import rna from "./sets/RNA";
 
 export const AllSets = {
+  RNA: rna,
   GRN: grn,
   M19: m19,
   DOM: dom,
