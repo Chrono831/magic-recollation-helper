@@ -44,7 +44,7 @@ export const getPackCount = code => {
   const set = AllSets[code];
   const commonsCount = set.cards.filter(card => card["rarity"] === "Common")
     .length;
-  const boosterCommonCount = set.booster.filter(card => card === "common")
+  const boosterCommonCount = set.boosterV3.filter(card => card === "common")
     .length;
 
   return Math.ceil(commonsCount / boosterCommonCount);

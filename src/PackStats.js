@@ -17,7 +17,7 @@ export const PackStats = props => {
           </tr>
         </thead>
         <tbody>
-          {data.booster.map((slot, index) => (
+          {data.boosterV3.map((slot, index) => (
             <tr key={`data-booster-td-${slot}-${index}`}>
               <td style={{ textAlign: "left" }}>{index + 1}</td>
               <td style={{ textAlign: "left" }}>{slot.toString()}</td>
