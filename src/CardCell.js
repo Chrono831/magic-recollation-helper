@@ -3,13 +3,13 @@ import React from "react";
 import { CardColors } from "./CardColors";
 import { CardTypes } from "./CardTypes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { getPackCount } from "./cardUtilities";
+import { getCardColorIdentity, getPackCount } from "./cardUtilities";
 
 export const CardCell = props => {
   const getCardStyle = () => ({
     gridColumn: props.index % getPackCount(props.code),
     gridRow: Math.floor((props.index - 1) / getPackCount(props.code)) + 1,
-    background: CardColors[props.card.colorIdentity].background,
+    background: CardColors[getCardColorIdentity(props.card)].background,
     display: "flex",
     alignItems: "center",
     justifyContent: "space-evenly",
@@ -28,11 +28,11 @@ export const CardCell = props => {
   return (
     <div
       style={getCardStyle(props.card, props.index)}
-      key={`grid-${props.card.multiverseid}-${props.index}`}
+      key={`grid-${props.card.multiverseId}-${props.index}`}
     >
       {props.card.types.map(type => (
         <div
-          key={`card-types-${type}-${props.card.multiverseid}-${props.index}`}
+          key={`card-types-${type}-${props.card.multiverseId}-${props.index}`}
           style={{ fontSize: "3rem" }}
         >
           {getCardIconClass(type)}

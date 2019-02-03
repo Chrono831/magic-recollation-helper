@@ -4,13 +4,14 @@ import { CardTypes } from "./CardTypes";
 
 const cardSort = (a, b) => {
   const colorDiff =
-    CardColors[a.colorIdentity].order - CardColors[b.colorIdentity].order;
+    CardColors[getCardColorIdentity(a)].order -
+    CardColors[getCardColorIdentity(b)].order;
   const typeDiff =
     (a.types.length === b.types.length) === 1
       ? CardTypes[a.types[0]].order - CardTypes[b.types[0]].order
       : CardTypes[a.types[a.types.length - 1]].order -
         CardTypes[b.types[b.types.length - 1]].order;
-  const multiverseIdDiff = a.multiverseid - b.multiverseid;
+  const multiverseIdDiff = a.multiverseId - b.multiverseId;
 
   if (colorDiff === 0) {
     if (typeDiff === 0) {
@@ -29,20 +30,30 @@ export const getCleanedCards = (code, rarity) => {
   for (let i = 0; i < cards.length; i++) {
     const card = cards[i];
     card.sortIndex = i + 1;
-    card.colorIdentity = card.types.includes("Land")
-      ? "L"
-      : card.colorIdentity === undefined
-        ? "C"
-        : card.colorIdentity.length > 1
-          ? "M"
-          : card.colorIdentity[0];
+    card.colorIdentity = getCardColorIdentity(card);
   }
   return cards.sort(cardSort);
 };
 
+export const getCardColorIdentity = card => {
+  return card.types.includes("Land")
+    ? "L"
+    : card.colorIdentity === undefined
+    ? "C"
+    : card.colorIdentity.length > 1
+    ? "M"
+    : card.colorIdentity[0];
+};
+
+export const getDisplayedRarity = rarity => {
+  return rarity === "mythic"
+    ? "Mythic Rare"
+    : rarity.charAt(0).toUpperCase() + rarity.slice(1);
+};
+
 export const getPackCount = code => {
   const set = AllSets[code];
-  const commonsCount = set.cards.filter(card => card["rarity"] === "Common")
+  const commonsCount = set.cards.filter(card => card["rarity"] === "common")
     .length;
   const boosterCommonCount = set.boosterV3.filter(card => card === "common")
     .length;
