@@ -1,9 +1,13 @@
 import React from "react";
 
 export const CardAnalysisTableRow = ({ rarity, data, dataType }) => {
+  const displayedRarity =
+    rarity === "mythic"
+      ? "Mythic Rare"
+      : rarity.charAt(0).toUpperCase() + rarity.slice(1);
   return (
     <tr>
-      <td style={{ textAlign: "left" }}>{rarity}</td>
+      <td style={{ textAlign: "left" }}>{displayedRarity}</td>
       <td style={{ textAlign: "left" }}>{data["Cards"]}</td>
       {dataType.map(cardType => (
         <td
