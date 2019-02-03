@@ -1,6 +1,7 @@
 import { AllSets } from "./AllSets";
 import { CardColors } from "./CardColors";
 import { CardTypes } from "./CardTypes";
+import { BasicLands } from "./BasicLands";
 
 const cardSort = (a, b) => {
   const colorDiff =
@@ -26,7 +27,8 @@ const cardSort = (a, b) => {
 
 export const getCleanedCards = (code, rarity) => {
   const set = AllSets[code];
-  const cards = set.cards.filter(card => card.rarity.includes(rarity));
+  const cards = set.cards.filter(card => card.rarity === rarity)
+    .filter(card => BasicLands.indexOf(card.name) === -1);
   for (let i = 0; i < cards.length; i++) {
     const card = cards[i];
     card.sortIndex = i + 1;
