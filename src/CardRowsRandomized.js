@@ -24,7 +24,7 @@ export const CardRowsRandomized = props => {
     complete: {
       colors: new Set(cards.map(card => card.colorIdentity)),
       types: new Set(
-        cards.map(card => card.types).reduce((acc, cur) => acc.concat(cur))
+        cards.map(card => card.types).reduce((acc, cur) => acc.concat(cur), '')
       )
     },
     used: {
