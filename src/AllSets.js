@@ -1,3 +1,4 @@
+/*
 import dom from "./sets/DOM";
 import ktk from "./sets/KTK";
 import ths from "./sets/THS";
@@ -18,10 +19,12 @@ import ori from "./sets/ORI";
 import xln from "./sets/XLN";
 import zen from "./sets/ZEN";
 import grn from "./sets/GRN";
-//import rna from "./sets/RNA";
+*/
+import rna from "./sets/RNA";
 
 export const AllSets = {
-  //RNA: rna, //gonna have to migrate all of the parsing to the new json format and update every thing...
+  RNA: rna, //gonna have to migrate all of the parsing to the new json format and update every thing...
+  /*
   GRN: grn,
   M19: m19,
   DOM: dom,
@@ -42,6 +45,7 @@ export const AllSets = {
   THS: ths,
   ZEN: zen,
   UST: ust,
+  */
 
   UNDEFINED: { code: "", cards: [] }
 };
