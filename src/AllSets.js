@@ -30,6 +30,7 @@ const getCleanedSet = (code) => {
   const cards = cardSet.cards.filter(card => BasicLands.indexOf(card.name) === -1);
 
   const cardsSlimSet = new Set();
+  const cardsSlimArr = [];
   for (let i = 0; i < cards.length; i++) {
     const card = cards[i];
     const newCard = {
@@ -43,11 +44,13 @@ const getCleanedSet = (code) => {
         return a & a;
       }, 0)
     };
-    cardsSlimSet.add(newCard);
-  }
-  const cardSlimArr = [...cardsSlimSet ];
-  cardSet.cards = cardSlimArr.sort(cardSort);
 
+    if (!cardsSlimSet.has(newCard.nameHash)) {
+      cardsSlimSet.add(newCard.nameHash);
+      cardsSlimArr.push(newCard);
+    }
+  }
+  cardSet.cards = cardsSlimArr.sort(cardSort);
   return cardSet;
 };
 
