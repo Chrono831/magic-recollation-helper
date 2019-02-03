@@ -29,12 +29,11 @@ const getCleanedSet = (code) => {
   const cardSet = AllSetsInternal[code];
   const cards = cardSet.cards.filter(card => BasicLands.indexOf(card.name) === -1);
 
-  const cardsSlim = [];
+  const cardsSlimSet = new Set();
   for (let i = 0; i < cards.length; i++) {
     const card = cards[i];
     const newCard = {
       rarity: card.rarity,
-      multiverseId: card.multiverseId,
       name: card.name,
       colorIdentity: getCardColorIdentity(card),
       types: card.types,
@@ -44,9 +43,10 @@ const getCleanedSet = (code) => {
         return a & a;
       }, 0)
     };
-    cardsSlim.push(newCard);
+    cardsSlimSet.add(newCard);
   }
-  cardSet.cards = cardsSlim.sort(cardSort);
+  const cardSlimArr = [...cardsSlimSet ];
+  cardSet.cards = cardSlimArr.sort(cardSort);
 
   return cardSet;
 };

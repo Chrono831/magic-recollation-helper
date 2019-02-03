@@ -61,7 +61,7 @@ export const CardRowsRandomized = props => {
 
     return (
       <CardCell
-        key={`card-cell-row-${card.multiverseId}-${index}`}
+        key={`card-cell-row-${card.nameHash}-${index}`}
         card={card}
         index={index + 1}
         {...props}

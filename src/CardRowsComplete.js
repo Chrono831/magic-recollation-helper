@@ -16,7 +16,7 @@ export const CardRowsComplete = props => (
     <div className="card-grid-container">
       {getFilteredCards(props.code, props.rarity).map((card, index) => (
         <CardCell
-          key={`card-cell-${card.multiverseId}-${index}`}
+          key={`card-cell-${card.nameHash}-${index}`}
           card={card}
           index={index + 1}
           {...props}

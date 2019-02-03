@@ -28,11 +28,11 @@ export const CardCell = props => {
   return (
     <div
       style={getCardStyle(props.card, props.index)}
-      key={`grid-${props.card.multiverseId}-${props.index}`}
+      key={`grid-${props.card.nameHash}-${props.index}`}
     >
       {props.card.types.map(type => (
         <div
-          key={`card-types-${type}-${props.card.multiverseId}-${props.index}`}
+          key={`card-types-${type}-${props.card.nameHash}-${props.index}`}
           style={{ fontSize: "3rem" }}
         >
           {getCardIconClass(type)}
