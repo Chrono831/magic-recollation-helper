@@ -3,8 +3,8 @@ import React from "react";
 import "./cardGridContainer.css";
 import {
   getCardColorIdentity,
-  getCleanedCards,
   getDisplayedRarity,
+  getFilteredCards,
   getPackCount,
   getRandomCard
 } from "./cardUtilities";
@@ -30,7 +30,7 @@ export const CardRowsRandomized = props => {
     complete: {
       colors: new Set(cards.map(card => card.colorIdentity)),
       types: new Set(
-        cards.map(card => card.types).reduce((acc, cur) => acc.concat(cur), '')
+        cards.map(card => card.types).reduce((acc, cur) => acc.concat(cur), "")
       )
     },
     used: {
@@ -70,7 +70,7 @@ export const CardRowsRandomized = props => {
   };
 
   const getRandomRows = (rarity, numberOfRows) => {
-    const cards = getCleanedCards(props.code, rarity);
+    const cards = getFilteredCards(props.code, rarity);
     const rowSize = getPackCount(props.code);
     const cardSets = getCardSets(cards);
     const cardCount = rowSize * numberOfRows;

@@ -1,9 +1,8 @@
 import { AllSets } from "./AllSets";
 import { CardColors } from "./CardColors";
 import { CardTypes } from "./CardTypes";
-import { BasicLands } from "./BasicLands";
 
-const cardSort = (a, b) => {
+export const cardSort = (a, b) => {
   const colorDiff =
     CardColors[getCardColorIdentity(a)].order -
     CardColors[getCardColorIdentity(b)].order;
@@ -25,17 +24,8 @@ const cardSort = (a, b) => {
   }
 };
 
-export const getCleanedCards = (code, rarity) => {
-  const set = AllSets[code];
-  const cards = set.cards.filter(card => card.rarity === rarity)
-    .filter(card => BasicLands.indexOf(card.name) === -1);
-  for (let i = 0; i < cards.length; i++) {
-    const card = cards[i];
-    card.sortIndex = i + 1;
-    card.colorIdentity = getCardColorIdentity(card);
-  }
-  return cards.sort(cardSort);
-};
+export const getFilteredCards = (code, rarity) =>
+  AllSets[code].cards.filter(card => card.rarity === rarity);
 
 export const getCardColorIdentity = card => {
   return card.types.includes("Land")
