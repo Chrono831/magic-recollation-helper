@@ -6,12 +6,15 @@ export const cardSort = (a, b) => {
   const colorDiff =
     CardColors[getCardColorIdentity(a)].order -
     CardColors[getCardColorIdentity(b)].order;
+
   const typeDiff =
-    (a.types.length === b.types.length) === 1
-      ? CardTypes[a.types[0]].order - CardTypes[b.types[0]].order
-      : CardTypes[a.types[a.types.length - 1]].order -
-        CardTypes[b.types[b.types.length - 1]].order;
-  const multiverseIdDiff = a.nameHash- b.nameHash;
+    a.types && b.types
+      ? (a.types.length === b.types.length) === 1
+        ? CardTypes[a.types[0]].order - CardTypes[b.types[0]].order
+        : CardTypes[a.types[a.types.length - 1]].order -
+          CardTypes[b.types[b.types.length - 1]].order
+      : 0;
+  const multiverseIdDiff = a.nameHash - b.nameHash;
 
   if (colorDiff === 0) {
     if (typeDiff === 0) {

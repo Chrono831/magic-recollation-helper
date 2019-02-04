@@ -1,8 +1,6 @@
-/*
 import dom from "./sets/DOM";
 import ktk from "./sets/KTK";
 import ths from "./sets/THS";
-import ust from "./sets/UST";
 import m19 from "./sets/M19";
 import aer from "./sets/AER";
 import emn from "./sets/EMN";
@@ -19,7 +17,6 @@ import ori from "./sets/ORI";
 import xln from "./sets/XLN";
 import zen from "./sets/ZEN";
 import grn from "./sets/GRN";
-*/
 import rna from "./sets/RNA";
 
 import { cardSort, getCardColorIdentity } from "./cardUtilities";
@@ -56,7 +53,6 @@ const getCleanedSet = (code) => {
 
 export const AllSetsInternal = {
   RNA: rna, //gonna have to migrate all of the parsing to the new json format and update every thing...
-  /*
   GRN: grn,
   M19: m19,
   DOM: dom,
@@ -76,13 +72,30 @@ export const AllSetsInternal = {
   KTK: ktk,
   THS: ths,
   ZEN: zen,
-  UST: ust,
-  */
 
   UNDEFINED: { code: "", cards: [] }
 };
 
 export const AllSets = {
   RNA: getCleanedSet('RNA'),
+  GRN: getCleanedSet('GRN'),
+  M19: getCleanedSet('M19'),
+  DOM: getCleanedSet('DOM'),
+  RIX: getCleanedSet('RIX'),
+  XLN: getCleanedSet('XLN'),
+  HOU: getCleanedSet('HOU'),
+  AKH: getCleanedSet('AKH'),
+  AER: getCleanedSet('AER'),
+  KLD: getCleanedSet('KLD'),
+  EMN: getCleanedSet('EMN'),
+  SOI: getCleanedSet('SOI'),
+  OGW: getCleanedSet('OGW'),
+  BFZ: getCleanedSet('BFZ'),
+  ORI: getCleanedSet('ORI'),
+  DTK: getCleanedSet('DTK'),
+  FRF: getCleanedSet('FRF'),
+  KTK: getCleanedSet('KTK'),
+  THS: getCleanedSet('THS'),
+  ZEN: getCleanedSet('ZEN'),
   UNDEFINED: { code: "", cards: [] }
 }
