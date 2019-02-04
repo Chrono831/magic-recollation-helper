@@ -25,9 +25,9 @@ export class PackLayouts extends Component {
           />
         </h2>
         <HowToUsePackLayouts show={this.state.showHelp} {...this.props} />
-        <CardRowsComplete rarity="Common" {...this.props} />
-        <CardRowsRandomized rarity="Uncommon" rows={3} {...this.props} />
-        <CardRowsRandomized rarity="Rare" rows={1} {...this.props} />
+        <CardRowsComplete rarity="common" {...this.props} />
+        <CardRowsRandomized rarity="uncommon" rows={3} {...this.props} />
+        <CardRowsRandomized rarity="rare" rows={1} {...this.props} />
       </div>
     );
   }

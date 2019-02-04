@@ -1,7 +1,13 @@
 import React from "react";
 
 import "./cardGridContainer.css";
-import { getCleanedCards, getPackCount, getRandomCard } from "./cardUtilities";
+import {
+  getCardColorIdentity,
+  getDisplayedRarity,
+  getFilteredCards,
+  getPackCount,
+  getRandomCard
+} from "./cardUtilities";
 import { CardCell } from "./CardCell";
 
 export const CardRowsRandomized = props => {
@@ -24,7 +30,7 @@ export const CardRowsRandomized = props => {
     complete: {
       colors: new Set(cards.map(card => card.colorIdentity)),
       types: new Set(
-        cards.map(card => card.types).reduce((acc, cur) => acc.concat(cur))
+        cards.map(card => card.types).reduce((acc, cur) => acc.concat(cur), "")
       )
     },
     used: {
@@ -50,12 +56,12 @@ export const CardRowsRandomized = props => {
 
     const card = getRandomCard(unusedCards);
 
-    cardSets.used.colors.add(card.colorIdentity);
+    cardSets.used.colors.add(getCardColorIdentity(card));
     cardSets.used.types.add(card.types.map(type => type));
 
     return (
       <CardCell
-        key={`card-cell-row-${card.multiverseid}-${index}`}
+        key={`card-cell-row-${card.nameHash}-${index}`}
         card={card}
         index={index + 1}
         {...props}
@@ -64,7 +70,7 @@ export const CardRowsRandomized = props => {
   };
 
   const getRandomRows = (rarity, numberOfRows) => {
-    const cards = getCleanedCards(props.code, rarity);
+    const cards = getFilteredCards(props.code, rarity);
     const rowSize = getPackCount(props.code);
     const cardSets = getCardSets(cards);
     const cardCount = rowSize * numberOfRows;
@@ -78,7 +84,7 @@ export const CardRowsRandomized = props => {
 
   return (
     <div>
-      <h4 style={{ textAlign: "left" }}>{props.rarity}</h4>
+      <h4 style={{ textAlign: "left" }}>{getDisplayedRarity(props.rarity)}</h4>
       <div className="card-grid-container">
         {getRandomRows(props.rarity, props.rows)}
       </div>

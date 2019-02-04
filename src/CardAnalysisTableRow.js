@@ -1,9 +1,10 @@
 import React from "react";
+import { getDisplayedRarity } from "./cardUtilities";
 
 export const CardAnalysisTableRow = ({ rarity, data, dataType }) => {
   return (
     <tr>
-      <td style={{ textAlign: "left" }}>{rarity}</td>
+      <td style={{ textAlign: "left" }}>{getDisplayedRarity(rarity)}</td>
       <td style={{ textAlign: "left" }}>{data["Cards"]}</td>
       {dataType.map(cardType => (
         <td
