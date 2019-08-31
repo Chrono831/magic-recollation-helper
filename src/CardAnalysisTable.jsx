@@ -1,15 +1,15 @@
-import React from "react";
+import React from 'react';
 
-import { Table } from "react-bootstrap";
-import { CardAnalysisTableRow } from "./CardAnalysisTableRow";
-import { AllSets } from "./AllSets";
-import { CardRarities } from "./CardRarities";
+import { Table } from 'react-bootstrap';
+import { CardAnalysisTableRow } from './CardAnalysisTableRow';
+import { AllSets } from './AllSets';
+import { CardRarities } from './CardRarities';
 
 export const CardAnalysisTable = ({
   dataType,
   code,
   getCardInfo,
-  getCardClass
+  getCardClass,
 }) => (
   <Table condensed hover responsive>
     <thead>

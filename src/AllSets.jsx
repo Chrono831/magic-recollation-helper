@@ -1,30 +1,32 @@
-import dom from "./sets/DOM";
-import ktk from "./sets/KTK";
-import ths from "./sets/THS";
-import m19 from "./sets/M19";
-import aer from "./sets/AER";
-import emn from "./sets/EMN";
-import frf from "./sets/FRF";
-import kld from "./sets/KLD";
-import soi from "./sets/SOI";
-import rix from "./sets/RIX";
-import akh from "./sets/AKH";
-import bfz from "./sets/BFZ";
-import dtk from "./sets/DTK";
-import hou from "./sets/HOU";
-import ogw from "./sets/OGW";
-import ori from "./sets/ORI";
-import xln from "./sets/XLN";
-import zen from "./sets/ZEN";
-import grn from "./sets/GRN";
-import rna from "./sets/RNA";
+import dom from './sets/DOM';
+import ktk from './sets/KTK';
+import ths from './sets/THS';
+import m19 from './sets/M19';
+import aer from './sets/AER';
+import emn from './sets/EMN';
+import frf from './sets/FRF';
+import kld from './sets/KLD';
+import soi from './sets/SOI';
+import rix from './sets/RIX';
+import akh from './sets/AKH';
+import bfz from './sets/BFZ';
+import dtk from './sets/DTK';
+import hou from './sets/HOU';
+import ogw from './sets/OGW';
+import ori from './sets/ORI';
+import xln from './sets/XLN';
+import zen from './sets/ZEN';
+import grn from './sets/GRN';
+import rna from './sets/RNA';
 
-import { cardSort, getCardColorIdentity } from "./cardUtilities";
-import { BasicLands } from "./BasicLands";
+import { cardSort, getCardColorIdentity } from './cardUtilities';
+import { BasicLands } from './BasicLands';
 
-const getCleanedSet = (code) => {
+const getCleanedSet = code => {
   const cardSet = AllSetsInternal[code];
-  const cards = cardSet.cards.filter(card => BasicLands.indexOf(card.name) === -1);
+  const cards = cardSet.cards.filter(
+    card => BasicLands.indexOf(card.name) === -1,
+  );
 
   const cardsSlimSet = new Set();
   const cardsSlimArr = [];
@@ -36,10 +38,10 @@ const getCleanedSet = (code) => {
       colorIdentity: getCardColorIdentity(card),
       types: card.types,
       sortIndex: i + 1,
-      nameHash: card.name.split("").reduce((a, b) => {
+      nameHash: card.name.split('').reduce((a, b) => {
         a = (a << 5) - a + b.charCodeAt(0);
         return a & a;
-      }, 0)
+      }, 0),
     };
 
     if (!cardsSlimSet.has(newCard.nameHash)) {
@@ -73,7 +75,7 @@ export const AllSetsInternal = {
   THS: ths,
   ZEN: zen,
 
-  UNDEFINED: { code: "", cards: [] }
+  UNDEFINED: { code: '', cards: [] },
 };
 
 export const AllSets = {
@@ -97,5 +99,5 @@ export const AllSets = {
   KTK: getCleanedSet('KTK'),
   THS: getCleanedSet('THS'),
   ZEN: getCleanedSet('ZEN'),
-  UNDEFINED: { code: "", cards: [] }
-}
+  UNDEFINED: { code: '', cards: [] },
+};

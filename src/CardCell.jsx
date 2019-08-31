@@ -1,19 +1,19 @@
-import React from "react";
+import React from 'react';
 
-import { CardColors } from "./CardColors";
-import { CardTypes } from "./CardTypes";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { getCardColorIdentity, getPackCount } from "./cardUtilities";
+import { CardColors } from './CardColors';
+import { CardTypes } from './CardTypes';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { getCardColorIdentity, getPackCount } from './cardUtilities';
 
 export const CardCell = props => {
   const getCardStyle = () => ({
     gridColumn: props.index % getPackCount(props.code),
     gridRow: Math.floor((props.index - 1) / getPackCount(props.code)) + 1,
     background: CardColors[getCardColorIdentity(props.card)].background,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-evenly",
-    flexDirection: "column"
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+    flexDirection: 'column',
   });
 
   const getCardIconClass = type => {
@@ -33,7 +33,7 @@ export const CardCell = props => {
       {props.card.types.map(type => (
         <div
           key={`card-types-${type}-${props.card.nameHash}-${props.index}`}
-          style={{ fontSize: "3rem" }}
+          style={{ fontSize: '3rem' }}
         >
           {getCardIconClass(type)}
         </div>
