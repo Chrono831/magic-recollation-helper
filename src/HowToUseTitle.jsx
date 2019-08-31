@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
 export const HowToUseTitle = props => {
-  const display = props.show ? "initial" : "none";
+  const display = props.show ? 'initial' : 'none';
   return (
-    <div style={{ textAlign: "left", display: display }}>
+    <div style={{ textAlign: 'left', display: display }}>
       <p>
         This is a tool to help you create packs usable for playing limited magic
         from your existing card pool

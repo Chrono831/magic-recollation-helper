@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import { CardTypes } from "./CardTypes";
-import { CardAnalysisTable } from "./CardAnalysisTable";
+import { CardTypes } from './CardTypes';
+import { CardAnalysisTable } from './CardAnalysisTable';
 
 export const CardTypeAnalysis = props => {
   const getCardClass = cardType =>
@@ -30,8 +30,8 @@ export const CardTypeAnalysis = props => {
   };
 
   return (
-    <div style={{ width: "100%" }}>
-      <h2 style={{ textAlign: "left" }}>Card Type Analysis</h2>
+    <div style={{ width: '100%' }}>
+      <h2 style={{ textAlign: 'left' }}>Card Type Analysis</h2>
       <CardAnalysisTable
         dataType={cardTypesList}
         getCardInfo={getCardInfo.bind(this)}
