@@ -1,6 +1,6 @@
-import { AllSets } from "./AllSets";
-import { CardColors } from "./CardColors";
-import { CardTypes } from "./CardTypes";
+import { AllSets } from './AllSets';
+import { CardColors } from './CardColors';
+import { CardTypes } from './CardTypes';
 
 export const cardSort = (a, b) => {
   const colorDiff =
@@ -31,26 +31,26 @@ export const getFilteredCards = (code, rarity) =>
   AllSets[code].cards.filter(card => card.rarity === rarity);
 
 export const getCardColorIdentity = card => {
-  return card.types.includes("Land")
-    ? "L"
+  return card.types.includes('Land')
+    ? 'L'
     : card.colorIdentity === undefined
-    ? "C"
+    ? 'C'
     : card.colorIdentity.length > 1
-    ? "M"
+    ? 'M'
     : card.colorIdentity[0];
 };
 
 export const getDisplayedRarity = rarity => {
-  return rarity === "mythic"
-    ? "Mythic Rare"
+  return rarity === 'mythic'
+    ? 'Mythic Rare'
     : rarity.charAt(0).toUpperCase() + rarity.slice(1);
 };
 
 export const getPackCount = code => {
   const set = AllSets[code];
-  const commonsCount = set.cards.filter(card => card["rarity"] === "common")
+  const commonsCount = set.cards.filter(card => card['rarity'] === 'common')
     .length;
-  const boosterCommonCount = set.boosterV3.filter(card => card === "common")
+  const boosterCommonCount = set.boosterV3.filter(card => card === 'common')
     .length;
 
   return Math.ceil(commonsCount / boosterCommonCount);

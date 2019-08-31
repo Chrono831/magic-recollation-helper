@@ -1,16 +1,16 @@
-import React from "react";
+import React from 'react';
 
-import "./cardGridContainer.css";
+import './cardGridContainer.css';
 import {
   getDisplayedRarity,
   getFilteredCards,
-  getPackCount
-} from "./cardUtilities";
-import { CardCell } from "./CardCell";
+  getPackCount,
+} from './cardUtilities';
+import { CardCell } from './CardCell';
 
 export const CardRowsComplete = props => (
   <div>
-    <h4 style={{ textAlign: "left" }}>
+    <h4 style={{ textAlign: 'left' }}>
       {getDisplayedRarity(props.rarity)} -- {getPackCount(props.code)} packs
     </h4>
     <div className="card-grid-container">

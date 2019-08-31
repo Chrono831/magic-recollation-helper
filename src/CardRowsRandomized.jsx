@@ -1,14 +1,14 @@
-import React from "react";
+import React from 'react';
 
-import "./cardGridContainer.css";
+import './cardGridContainer.css';
 import {
   getCardColorIdentity,
   getDisplayedRarity,
   getFilteredCards,
   getPackCount,
-  getRandomCard
-} from "./cardUtilities";
-import { CardCell } from "./CardCell";
+  getRandomCard,
+} from './cardUtilities';
+import { CardCell } from './CardCell';
 
 export const CardRowsRandomized = props => {
   const getUnusedCards = (cards, cardSets) =>
@@ -16,27 +16,27 @@ export const CardRowsRandomized = props => {
       .filter(
         card =>
           Array.from(cardSets.used.colors).some(
-            color => color === card.colorIdentity
-          ) === false
+            color => color === card.colorIdentity,
+          ) === false,
       )
       .filter(
         card =>
           Array.from(cardSets.used.types).some(
-            type => type === card.types[0]
-          ) === false
+            type => type === card.types[0],
+          ) === false,
       );
 
   const getCardSets = cards => ({
     complete: {
       colors: new Set(cards.map(card => card.colorIdentity)),
       types: new Set(
-        cards.map(card => card.types).reduce((acc, cur) => acc.concat(cur), "")
-      )
+        cards.map(card => card.types).reduce((acc, cur) => acc.concat(cur), ''),
+      ),
     },
     used: {
       colors: new Set(),
-      types: new Set()
-    }
+      types: new Set(),
+    },
   });
 
   const getCardCellAndUpdateUsedCards = (cardSets, cards, index) => {
@@ -84,7 +84,7 @@ export const CardRowsRandomized = props => {
 
   return (
     <div>
-      <h4 style={{ textAlign: "left" }}>{getDisplayedRarity(props.rarity)}</h4>
+      <h4 style={{ textAlign: 'left' }}>{getDisplayedRarity(props.rarity)}</h4>
       <div className="card-grid-container">
         {getRandomRows(props.rarity, props.rows)}
       </div>

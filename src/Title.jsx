@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { HowToUseTitle } from "./HowToUseTitle";
+import React, { Component } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { HowToUseTitle } from './HowToUseTitle';
 
 export class Title extends Component {
   state = { showHelp: false };
@@ -17,7 +17,7 @@ export class Title extends Component {
           <FontAwesomeIcon
             icon="question-circle"
             title="How To Use"
-            color={"#5f9ea0"}
+            color={'#5f9ea0'}
             onClick={this.helpIconClickHandler.bind(this)}
           />
         </h1>
